@@ -4,8 +4,12 @@
     <loc>https://www.elitexsolutions.xyz/</loc>
     <priority>1.0</priority>
   </url>
+    <url>
+    <loc>https://www.elitexsolutions.xyz/services</loc>
+    <priority>0.8</priority>
+  </url>
   <url>
-    <loc>https://www.elitexsolutions.xyz/about</loc>
+    <loc>https://www.elitexsolutions.xyz/portfolio</loc>
     <priority>0.8</priority>
   </url>
   <url>
