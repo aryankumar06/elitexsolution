@@ -4,7 +4,9 @@ import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import GlassCard from '../components/GlassCard';
+//import emailjs from 'emailjs-com';
 import ParticleBackground from '../components/ParticleBackground';
+
 
 const Contact: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -31,7 +33,7 @@ const Contact: React.FC = () => {
   ];
 
   const plans = ['Basic', 'Advanced', 'Pro', 'Custom'];
-  const budgets = ['$1,000 - $5,000', '$5,000 - $10,000', '$10,000 - $25,000', '$25,000+'];
+  const budgets = ['$400 - $600', '$700 - $1,000', '$1,000 - $2,000', '$25,000+'];
   const timelines = ['1-2 weeks', '1 month', '2-3 months', '3+ months'];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -54,7 +56,7 @@ const Contact: React.FC = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-black text-red flex items-center justify-center">
         <ParticleBackground />
         <Navigation />
         
@@ -127,7 +129,7 @@ const Contact: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-white">Email Us</h3>
-                        <p className="text-gray-400">hello@elitexsolutions.com</p>
+                        <p className="text-gray-400">team@elitexsolutions.com</p>
                       </div>
                     </div>
                   </div>
@@ -141,7 +143,7 @@ const Contact: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-white">Call Us</h3>
-                        <p className="text-gray-400">+1 (555) 123-4567</p>
+                        <p className="text-gray-400">+91 9310479532 / +91 93546 30932</p>
                       </div>
                     </div>
                   </div>
@@ -155,7 +157,8 @@ const Contact: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-white">Visit Us</h3>
-                        <p className="text-gray-400">123 Tech Street, Silicon Valley, CA 94000</p>
+                        <p className="text-gray-400">Near Signature street govindpuram,
+                          ghaziabad,U.P,India </p>
                       </div>
                     </div>
                   </div>
