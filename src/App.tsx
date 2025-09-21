@@ -23,9 +23,9 @@ function App() {
       <div className="min-h-screen bg-black text-white">
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/Services" element={<Services />} />
+          <Route path="/Portfolio" element={<Portfolio />} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>
