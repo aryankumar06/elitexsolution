@@ -84,8 +84,8 @@ const Portfolio: React.FC = () => {
       <ParticleBackground />
       <Navigation />
       
-      <div className="pt-20 pb-12">
-        <div className="container mx-auto px-6">
+      <div className="pt-16 md:pt-20 pb-10 md:pb-12">
+        <div className="container mx-auto px-4 md:px-6">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
@@ -93,19 +93,19 @@ const Portfolio: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Our{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Portfolio
               </span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
               Explore our latest projects and see how we've helped businesses transform their digital presence with innovative solutions.
             </p>
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -119,7 +119,7 @@ const Portfolio: React.FC = () => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-300 hover:scale-110"
+                      className="w-full h-32 md:h-44 lg:h-48 object-cover transition-transform duration-300 hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute top-4 left-4">
@@ -131,36 +131,36 @@ const Portfolio: React.FC = () => {
                   </div>
                   
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold text-white mb-3">
+                    <h3 className="text-lg md:text-xl font-semibold text-white mb-2 md:mb-3">
                       {project.title}
                     </h3>
                     
-                    <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                    <p className="text-gray-300 text-xs md:text-sm mb-3 md:mb-4 leading-relaxed">
                       {project.description}
                     </p>
                     
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-2 py-1 bg-white/10 text-gray-300 text-xs rounded"
+                          className="px-1.5 py-0.5 md:px-2 md:py-1 bg-white/10 text-gray-300 text-[10px] md:text-xs rounded"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
                     
-                    <div className="flex space-x-3">
+                    <div className="flex space-x-2 md:space-x-3">
                       <a
                         href={project.liveUrl}
-                        className="flex-1 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-4 py-2 rounded-lg text-white text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300"
+                        className="flex-1 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-3 py-2 md:px-4 md:py-2 rounded-lg text-white text-xs md:text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300"
                       >
                         <ExternalLink className="h-4 w-4" />
                         Live Demo
                       </a>
                       <a
                         href={project.githubUrl}
-                        className="px-4 py-2 border border-gray-600 hover:border-red-500 rounded-lg text-gray-300 hover:text-white text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300"
+                        className="px-3 py-2 md:px-4 md:py-2 border border-gray-600 hover:border-red-500 rounded-lg text-gray-300 hover:text-white text-xs md:text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300"
                       >
                         <Github className="h-4 w-4" />
                         Code
@@ -206,15 +206,15 @@ const Portfolio: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Ready to Start Your Project?
             </h2>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
               Let's discuss your ideas and create something amazing together. Our team is ready to bring your vision to life.
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 md:px-8 md:py-4 rounded-lg text-sm md:text-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
               Start Your Project
               <ExternalLink className="h-5 w-5" />

@@ -92,8 +92,8 @@ const Contact: React.FC = () => {
       <ParticleBackground />
       <Navigation />
       
-      <div className="pt-20 pb-12">
-        <div className="container mx-auto px-6">
+      <div className="pt-16 md:pt-20 pb-10 md:pb-12">
+        <div className="container mx-auto px-4 md:px-6">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
@@ -101,18 +101,18 @@ const Contact: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Get In{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Touch
               </span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
               Ready to transform your ideas into reality? Let's discuss your project and create something amazing together.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
             {/* Contact Info */}
             <div className="lg:col-span-1">
               <motion.div
@@ -122,42 +122,42 @@ const Contact: React.FC = () => {
                 className="space-y-8"
               >
                 <GlassCard>
-                  <div className="p-6">
+                  <div className="p-5 md:p-6">
                     <div className="flex items-center space-x-4 mb-4">
-                      <div className="p-3 bg-red-500/20 rounded-lg">
+                      <div className="p-2.5 md:p-3 bg-red-500/20 rounded-lg">
                         <Mail className="h-6 w-6 text-red-400" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-white">Email Us</h3>
-                        <p className="text-gray-400">team@elitexsolutions.com</p>
+                        <h3 className="text-base md:text-lg font-semibold text-white">Email Us</h3>
+                        <p className="text-sm md:text-base text-gray-400">team@elitexsolutions.com</p>
                       </div>
                     </div>
                   </div>
                 </GlassCard>
 
                 <GlassCard>
-                  <div className="p-6">
+                  <div className="p-5 md:p-6">
                     <div className="flex items-center space-x-4 mb-4">
-                      <div className="p-3 bg-blue-500/20 rounded-lg">
+                      <div className="p-2.5 md:p-3 bg-blue-500/20 rounded-lg">
                         <Phone className="h-6 w-6 text-blue-400" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-white">Call Us</h3>
-                        <p className="text-gray-400">+91 9310479532 / +91 93546 30932</p>
+                        <h3 className="text-base md:text-lg font-semibold text-white">Call Us</h3>
+                        <p className="text-sm md:text-base text-gray-400">+91 9310479532 / +91 93546 30932</p>
                       </div>
                     </div>
                   </div>
                 </GlassCard>
 
                 <GlassCard>
-                  <div className="p-6">
+                  <div className="p-5 md:p-6">
                     <div className="flex items-center space-x-4 mb-4">
-                      <div className="p-3 bg-green-500/20 rounded-lg">
+                      <div className="p-2.5 md:p-3 bg-green-500/20 rounded-lg">
                         <MapPin className="h-6 w-6 text-green-400" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-white">Visit Us</h3>
-                        <p className="text-gray-400">Near Signature street govindpuram,
+                        <h3 className="text-base md:text-lg font-semibold text-white">Visit Us</h3>
+                        <p className="text-sm md:text-base text-gray-400">Near Signature street govindpuram,
                           ghaziabad,U.P,India </p>
                       </div>
                     </div>
@@ -165,8 +165,8 @@ const Contact: React.FC = () => {
                 </GlassCard>
 
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-white mb-4">Business Hours</h3>
-                  <div className="space-y-2 text-gray-400">
+                  <h3 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4">Business Hours</h3>
+                  <div className="space-y-1.5 md:space-y-2 text-gray-400 text-sm md:text-base">
                     <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                     <p>Saturday: 10:00 AM - 4:00 PM</p>
                     <p>Sunday: Closed</p>
@@ -183,11 +183,11 @@ const Contact: React.FC = () => {
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
                 <GlassCard>
-                  <div className="p-8">
-                    <h2 className="text-2xl font-bold text-white mb-6">Start Your Project</h2>
+                  <div className="p-6 md:p-8">
+                    <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Start Your Project</h2>
                     
                     <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                         <div>
                           <label className="block text-sm font-medium text-gray-300 mb-2">
                             Full Name *
@@ -197,7 +197,7 @@ const Contact: React.FC = () => {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
+                            className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
                             placeholder="Your full name"
                             required
                           />
@@ -212,14 +212,14 @@ const Contact: React.FC = () => {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
+                            className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
                             placeholder="your@email.com"
                             required
                           />
                         </div>
                       </div>
 
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                         <div>
                           <label className="block text-sm font-medium text-gray-300 mb-2">
                             Phone Number
@@ -229,7 +229,7 @@ const Contact: React.FC = () => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
+                            className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
                             placeholder="+1 (555) 123-4567"
                           />
                         </div>
@@ -243,13 +243,13 @@ const Contact: React.FC = () => {
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
+                            className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
                             placeholder="Your company name"
                           />
                         </div>
                       </div>
 
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                         <div>
                           <label className="block text-sm font-medium text-gray-300 mb-2">
                             Service *
@@ -258,7 +258,7 @@ const Contact: React.FC = () => {
                             name="service"
                             value={formData.service}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:border-red-500 transition-colors"
+                            className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
                             required
                           >
                             <option value="">Select a service</option>
@@ -278,7 +278,7 @@ const Contact: React.FC = () => {
                             name="plan"
                             value={formData.plan}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:border-red-500 transition-colors"
+                            className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
                           >
                             <option value="">Select a plan</option>
                             {plans.map(plan => (
@@ -339,7 +339,7 @@ const Contact: React.FC = () => {
                           value={formData.message}
                           onChange={handleChange}
                           rows={6}
-                          className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
+                          className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
                           placeholder="Tell us about your project, goals, and any specific requirements..."
                           required
                         />
@@ -348,7 +348,7 @@ const Contact: React.FC = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-4 rounded-lg text-white font-semibold flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 md:px-8 md:py-4 rounded-lg text-white text-sm md:text-base font-semibold flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? (
                           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

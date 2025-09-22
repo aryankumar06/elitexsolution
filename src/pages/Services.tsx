@@ -87,8 +87,8 @@ const Services: React.FC = () => {
       <ParticleBackground />
       <Navigation />
       
-      <div className="pt-20 pb-12">
-        <div className="container mx-auto px-6">
+      <div className="pt-16 md:pt-20 pb-10 md:pb-12">
+        <div className="container mx-auto px-4 md:px-6">
           {/* Header */}
           <motion.div
             className="text-center mb-16"
@@ -96,19 +96,19 @@ const Services: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Our{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Services
               </span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
               Comprehensive tech solutions designed to transform your business with cutting-edge technology and innovative approaches.
             </p>
           </motion.div>
 
           {/* Services */}
-          <div className="space-y-20">
+          <div className="space-y-12 md:space-y-20">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -117,43 +117,43 @@ const Services: React.FC = () => {
                 transition={{ delay: index * 0.1, duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
+                <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
                   {/* Service Info */}
                   <div>
-                    <div className="flex items-center mb-6">
+                    <div className="flex items-center mb-3 md:mb-6">
                       <div className="text-red-400 mr-4">
-                        {service.icon}
+                        {React.cloneElement(service.icon as React.ReactElement, { className: 'h-8 w-8 md:h-12 md:w-12' })}
                       </div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-white">
+                      <h2 className="text-xl md:text-4xl font-bold text-white">
                         {service.title}
                       </h2>
                     </div>
                     
-                    <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                    <p className="text-base md:text-xl text-gray-300 mb-6 md:mb-8 leading-relaxed">
                       {service.description}
                     </p>
 
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-4">
                       {service.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center space-x-3">
-                          <Check className="h-5 w-5 text-green-400 flex-shrink-0" />
-                          <span className="text-gray-300">{feature}</span>
+                          <Check className="h-4 w-4 md:h-5 md:w-5 text-green-400 flex-shrink-0" />
+                          <span className="text-gray-300 text-sm md:text-base">{feature}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Pricing Cards */}
-                  <div className="grid gap-6">
+                  <div className="grid gap-3 md:gap-6">
                     {Object.entries(service.pricing).map(([plan, details]) => (
                       <GlassCard key={plan}>
-                        <div className="p-6">
+                        <div className="p-4 md:p-6">
                           <div className="flex justify-between items-start mb-4">
                             <div>
-                              <h3 className="text-xl font-semibold text-white capitalize mb-1">
+                              <h3 className="text-base md:text-xl font-semibold text-white capitalize mb-1">
                                 {plan} Plan
                               </h3>
-                              <p className="text-3xl font-bold text-red-400">
+                              <p className="text-2xl md:text-3xl font-bold text-red-400">
                                 {details.price}
                               </p>
                             </div>
@@ -166,10 +166,10 @@ const Services: React.FC = () => {
                             </div>
                           </div>
                           
-                          <ul className="space-y-2 mb-6">
+                          <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6">
                             {details.features.map((feature, featureIndex) => (
-                              <li key={featureIndex} className="flex items-center space-x-2 text-sm text-gray-300">
-                                <Check className="h-4 w-4 text-green-400 flex-shrink-0" />
+                              <li key={featureIndex} className="flex items-center space-x-2 text-[11px] md:text-sm text-gray-300">
+                                <Check className="h-3.5 w-3.5 md:h-4 md:w-4 text-green-400 flex-shrink-0" />
                                 <span>{feature}</span>
                               </li>
                             ))}
@@ -177,7 +177,7 @@ const Services: React.FC = () => {
                           
                           <Link
                             to={`/contact?service=${encodeURIComponent(service.title)}&plan=${plan}`}
-                            className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-4 py-3 rounded-lg text-white font-semibold flex items-center justify-center gap-2 transition-all duration-300"
+                            className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-3 py-2 md:px-4 md:py-3 rounded-lg text-white text-xs md:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300"
                           >
                             Choose {plan}
                             <ArrowRight className="h-4 w-4" />

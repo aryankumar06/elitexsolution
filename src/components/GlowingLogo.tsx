@@ -8,10 +8,10 @@ interface GlowingLogoProps {
 
 const GlowingLogo: React.FC<GlowingLogoProps> = ({ className = '', size = 'md' }) => {
   const sizeClasses = {
-    sm: 'text-2xl',
-    md: 'text-4xl',
-    lg: 'text-6xl',
-    xl: 'text-8xl'
+    sm: 'text-xl md:text-2xl',
+    md: 'text-3xl md:text-4xl',
+    lg: 'text-4xl md:text-6xl',
+    xl: 'text-5xl md:text-8xl'
   };
 
   return (

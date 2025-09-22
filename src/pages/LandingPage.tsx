@@ -10,22 +10,22 @@ import Navigation from '../components/Navigation';
 const LandingPage: React.FC = () => {
   const services = [
     {
-      icon: <Code className="h-8 w-8" />,
+      icon: <Code className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'Web Development',
       description: 'Full-stack web applications with modern frameworks like React, Next.js, and Node.js for scalable solutions.'
     },
     {
-      icon: <Smartphone className="h-8 w-8" />,
+      icon: <Smartphone className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'Android Development',
       description: 'Native Android apps with Kotlin and Java, delivering seamless mobile experiences for your users.'
     },
     {
-      icon: <Palette className="h-8 w-8" />,
+      icon: <Palette className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'UI/UX Design',
       description: 'Beautiful, intuitive designs that convert visitors into customers with modern design principles.'
     },
     {
-      icon: <Gamepad2 className="h-8 w-8" />,
+      icon: <Gamepad2 className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'Game Development',
       description: 'Engaging games for mobile and web platforms using Unity, Unreal Engine, and custom frameworks.'
     }
@@ -68,20 +68,20 @@ const LandingPage: React.FC = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative">
+      <section className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative">
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
         
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             className="text-center max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <GlowingLogo size="xl" className="mb-8" />
+            <GlowingLogo size="lg" className="mb-6 md:mb-8" />
             
             <motion.h1
-              className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent"
+              className="text-xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
@@ -93,7 +93,7 @@ const LandingPage: React.FC = () => {
             </motion.h1>
 
             <motion.p
-              className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
+              className="text-base md:text-2xl text-gray-300 mb-6 md:mb-8 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 1 }}
@@ -103,22 +103,22 @@ const LandingPage: React.FC = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
             >
               <Link
                 to="/services"
-                className="group bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-4 rounded-lg text-lg font-semibold flex items-center gap-2 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+                className="group bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 md:px-8 md:py-4 rounded-lg text-sm md:text-lg font-semibold flex items-center gap-2 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
               >
                 Explore Services
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               
               <Link
                 to="/contact"
-                className="px-8 py-4 rounded-lg text-lg font-semibold border-2 border-gray-600 hover:border-red-500 transition-colors duration-300"
+                className="px-6 py-3 md:px-8 md:py-4 rounded-lg text-sm md:text-lg font-semibold border-2 border-gray-600 hover:border-red-500 transition-colors duration-300"
               >
                 Get Quote
               </Link>
@@ -127,7 +127,7 @@ const LandingPage: React.FC = () => {
         </div>
 
         {/* Floating 3D Elements */}
-        <div className="absolute top-1/4 left-10 opacity-30">
+        <div className="absolute top-1/4 left-10 opacity-30 hidden md:block">
           <motion.div
             animate={{ rotate: 360, y: [0, -20, 0] }}
             transition={{ rotate: { duration: 20, repeat: Infinity }, y: { duration: 4, repeat: Infinity } }}
@@ -135,7 +135,7 @@ const LandingPage: React.FC = () => {
           />
         </div>
         
-        <div className="absolute bottom-1/4 right-10 opacity-30">
+        <div className="absolute bottom-1/4 right-10 opacity-30 hidden md:block">
           <motion.div
             animate={{ rotate: -360, y: [0, 20, 0] }}
             transition={{ rotate: { duration: 15, repeat: Infinity }, y: { duration: 3, repeat: Infinity } }}
@@ -146,7 +146,7 @@ const LandingPage: React.FC = () => {
 
       {/* Stats Section */}
       <section className="py-20 relative">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -168,7 +168,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 relative">
+      <section className="py-14 md:py-20 relative">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-16"
@@ -177,28 +177,28 @@ const LandingPage: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Our{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Services
               </span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
               Comprehensive tech solutions designed to elevate your business with cutting-edge technology and innovative approaches.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <GlassCard key={index} delay={index * 0.1}>
-                <div className="p-6 h-full">
-                  <div className="text-red-400 mb-4">
+                <div className="p-3 sm:p-4 md:p-6 h-full">
+                  <div className="text-red-400 mb-3 md:mb-4">
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
+                  <h3 className="text-base md:text-xl font-semibold mb-1.5 md:mb-3 text-white">
                     {service.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 text-xs md:text-base leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -209,7 +209,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-20 relative">
+      <section className="py-14 md:py-20 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/10 to-blue-900/10" />
         <div className="container mx-auto px-6 relative">
           <motion.div
@@ -219,18 +219,18 @@ const LandingPage: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Client{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Reviews
               </span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
               Don't just take our word for it. Here's what our clients say about working with EliteX Solutions.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {reviews.map((review, index) => (
               <motion.div
                 key={index}
@@ -240,22 +240,22 @@ const LandingPage: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <GlassCard>
-                  <div className="p-6">
-                    <div className="flex items-center mb-4">
-                      <span className="text-3xl mr-3">{review.avatar}</span>
+                  <div className="p-4 md:p-6">
+                    <div className="flex items-center mb-3 md:mb-4">
+                      <span className="text-2xl md:text-3xl mr-3">{review.avatar}</span>
                       <div>
-                        <h4 className="font-semibold text-white">{review.name}</h4>
-                        <p className="text-sm text-gray-400">{review.company}</p>
+                        <h4 className="font-semibold text-white text-sm md:text-base">{review.name}</h4>
+                        <p className="text-xs md:text-sm text-gray-400">{review.company}</p>
                       </div>
                     </div>
                     
-                    <div className="flex mb-4">
+                    <div className="flex mb-3 md:mb-4">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                        <Star key={i} className="h-3.5 w-3.5 md:h-4 md:w-4 text-yellow-400 fill-current" />
                       ))}
                     </div>
                     
-                    <blockquote className="text-gray-300 italic">
+                    <blockquote className="text-gray-300 italic text-sm md:text-base">
                       "{review.review}"
                     </blockquote>
                   </div>
