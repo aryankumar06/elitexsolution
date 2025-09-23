@@ -5,8 +5,12 @@ import { useSearchParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
-//import emailjs from 'emailjs-com';
 import ParticleBackground from '../components/ParticleBackground';
+import emailjs from '@emailjs/browser';
+
+const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 
 const Contact: React.FC = () => {
@@ -27,6 +31,7 @@ const Contact: React.FC = () => {
   const [coupon, setCoupon] = useState('');
   const [couponApplied, setCouponApplied] = useState(false);
   const [couponError, setCouponError] = useState('');
+  const [submitError , setSubmitError] = useState<string>('');
 
   // Auto-apply discount from URL param
   useEffect(() => {
@@ -55,6 +60,7 @@ const Contact: React.FC = () => {
       ...prev,
       [e.target.name]: e.target.value
     }));
+    setSubmitError('');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -62,11 +68,27 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await sendEmail();
     
     setIsSubmitting(false);
-    setIsSubmitted(true);
+    if(submitError === '') setIsSubmitted(true);
   };
+
+  const sendEmail = async () => {
+    if(formData.name === '' || formData.email === '' || formData.phone === '' || formData.service === '' || formData.message === ''){
+      setSubmitError('Please fill all the fields!!');
+      return;
+    }
+
+    try{
+      const response = await emailjs.send(serviceID , templateID , formData , publicKey);
+      if(response.status !== 200) throw new Error("Could not sent the email, please try again!!");
+    }catch(err){
+      console.log("Could not sent email!! : " , err);
+      setSubmitError("Could not sent email !!");
+      return;
+    }
+  }
 
   const handleApplyCoupon = () => {
     const code = coupon.trim().toUpperCase();
@@ -411,6 +433,13 @@ const Contact: React.FC = () => {
                           </>
                         )}
                       </button>
+                      {
+                        submitError.length > 0 ? 
+                          <div className='w-full text-center text-sm text-pink-600 py-4'>
+                            {submitError}
+                          </div>
+                        : null
+                      }
                     </form>
                   </div>
                 </GlassCard>
