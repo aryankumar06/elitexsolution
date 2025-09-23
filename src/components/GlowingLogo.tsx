@@ -42,7 +42,7 @@ const GlowingLogo: React.FC<GlowingLogoProps> = ({ className = '', size = 'md' }
           filter: 'drop-shadow(0 0 10px #ff0040)',
         }}
       >
-        eliteX
+        elite<i>X</i>
       </motion.span>
       <motion.span
         className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"

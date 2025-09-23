@@ -11,7 +11,7 @@ const ParticleBackground: React.FC = () => {
   }));
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none hidden md:block will-change-transform">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none hidden md:delay-200 block will-change-transform">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}

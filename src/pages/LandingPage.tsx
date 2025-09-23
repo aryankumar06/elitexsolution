@@ -308,7 +308,7 @@ const LandingPage: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Award className="h-5 w-5 text-yellow-400" />
-                  <span className="text-gray-300">Morden - minimal design & development</span>
+                  <span className="text-gray-300">Modern - minimal design & development</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-green-400" />

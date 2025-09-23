@@ -3,11 +3,13 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import { AnimatePresence, motion } from 'framer-motion';
 import LogoIntro from './components/LogoIntro';
 import ScrollProgress from './components/ScrollProgress';
+import GlassBackground from './components/GlassBackground';
 
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const Services = lazy(() => import('./pages/Services'));
 const Portfolio = lazy(() => import('./pages/Portfolio'));
 const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -42,6 +44,7 @@ function AnimatedRoutes() {
             <Route path="/services" element={<Services />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
@@ -63,6 +66,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-black text-white text-sm md:text-base">
+        <GlassBackground />
         <ScrollProgress />
         <AnimatedRoutes />
       </div>
