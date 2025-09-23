@@ -4,12 +4,15 @@ import Navigation from '../components/Navigation';
 import ParticleBackground from '../components/ParticleBackground';
 import GlassCard from '../components/GlassCard';
 import LiquidGlow from '../components/LiquidGlow';
+import profil1 from "../saman/profile22.jpeg";
+import profil2 from "../saman/utsav.jpg";
+import profil3 from "../saman/akshay.jpg";
 
 const team = [
-  { name: 'Aryan Kumar', role: 'Founder & CEO', photo: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { name: 'Utsav Sharma', role: 'Co-founder & CTO', photo: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { name: 'Aarav Singh', role: 'Design Lead', photo: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { name: 'Priya Mehta', role: 'Project Manager', photo: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400' },
+  { name: 'Aryan Kumar', role: 'Founder & CEO  ',skill:"(Lead Web Developer)", photo: profil1 },
+  { name: 'Utsav Rana', role: 'Co-founder & CTO',skill:"(Senior Mobile Developer)", photo: profil2 },
+  { name: 'Akshay Pundir ', role: 'Design Lead', photo: profil3 },
+  { name: 'Abhinav Singh', role: 'Senior Web Developer', photo: "" },
 ];
 
 const About: React.FC = () => {
@@ -69,7 +72,7 @@ const About: React.FC = () => {
             viewport={{ once: true }}
           >
             <LiquidGlow color="#22d3ee" size={200} />
-            <h2 className="text-2xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Our Team</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">Our Elite Team</h2>
             <p className="text-gray-400 text-sm md:text-base">Small, focused, and deeply committed to quality.</p>
           </motion.div>
 
@@ -85,6 +88,7 @@ const About: React.FC = () => {
                   />
                   <h3 className="text-lg md:text-xl font-semibold text-white">{member.name}</h3>
                   <p className="text-gray-400 text-sm">{member.role}</p>
+                  <p className="text-gray-400 text-sm">{member.skill}</p>
                 </div>
               </GlassCard>
             ))}
