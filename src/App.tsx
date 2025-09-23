@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import LogoIntro from './components/LogoIntro';
 import ScrollProgress from './components/ScrollProgress';
 import GlassBackground from './components/GlassBackground';
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react"
 
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const Services = lazy(() => import('./pages/Services'));
@@ -52,7 +52,7 @@ function AnimatedRoutes() {
     </Suspense>
   );
 }
-export  function Analytics() {
+export  function analytics() {
   return (
     <div>
       {/* ... */}
