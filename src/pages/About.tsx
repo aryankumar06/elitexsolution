@@ -13,6 +13,7 @@ const team = [
   { name: 'Utsav Rana', role: 'Co-founder & CTO',skill:"(Senior Mobile Developer)", photo: profil2 },
   { name: 'Akshay Pundir ', role: 'Design Lead', photo: profil3 },
   { name: 'Abhinav Singh', role: 'Senior Web Developer', photo: "" },
+  { name: 'Sourav Jangid', role: 'Lead Software Engineer', photo: "" },
 ];
 
 const About: React.FC = () => {
