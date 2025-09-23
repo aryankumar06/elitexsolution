@@ -70,6 +70,7 @@ function App() {
         <GlassBackground />
         <ScrollProgress />
         <AnimatedRoutes />
+        <Analytics />
       </div>
     </Router>
   );
