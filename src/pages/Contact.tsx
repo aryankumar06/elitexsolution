@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
-//imporimport ParticleBackground from '../components/ParticleBackground';
+import ParticleBackground from '../components/ParticleBackground';
 import emailjs from '@emailjs/browser';
 
 const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID
@@ -440,5 +440,16 @@ const Contact: React.FC = () => {
                           </div>
                         : null
                       }
-             </div>
-                    : null}
+                    </form>
+                  </div>
+                </GlassCard>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;
