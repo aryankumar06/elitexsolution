@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import LogoIntro from './components/LogoIntro';
 import ScrollProgress from './components/ScrollProgress';
 import GlassBackground from './components/GlassBackground';
+import { Analytics } from "@vercel/analytics/next";
 
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const Services = lazy(() => import('./pages/Services'));
