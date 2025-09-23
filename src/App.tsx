@@ -52,7 +52,14 @@ function AnimatedRoutes() {
     </Suspense>
   );
 }
-
+export  function Analytics() {
+  return (
+    <div>
+      {/* ... */}
+      <Analytics />
+    </div>
+  );
+}
 function App() {
   const [showIntro, setShowIntro] = useState(true);
 
