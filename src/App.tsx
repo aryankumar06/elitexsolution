@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LogoIntro from './components/LogoIntro';
@@ -22,7 +21,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-black text-white text-sm md:text-base">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={ <LandingPage /> } />
           <Route path="/Services" element={<Services />} />
           <Route path="/Portfolio" element={<Portfolio />} />
           <Route path="/Contact" element={<Contact />} />
