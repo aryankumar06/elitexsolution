@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
 //import emailjs from 'emailjs-com';
 import ParticleBackground from '../components/ParticleBackground';
@@ -23,6 +24,19 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [coupon, setCoupon] = useState('');
+  const [couponApplied, setCouponApplied] = useState(false);
+  const [couponError, setCouponError] = useState('');
+
+  // Auto-apply discount from URL param
+  useEffect(() => {
+    const discount = (searchParams.get('discount') || '').toUpperCase();
+    if (discount === 'FIRST40') {
+      setCoupon('FIRST40');
+      setCouponApplied(true);
+      setCouponError('');
+    }
+  }, [searchParams]);
 
   const services = [
     'Web Development',
@@ -52,6 +66,17 @@ const Contact: React.FC = () => {
     
     setIsSubmitting(false);
     setIsSubmitted(true);
+  };
+
+  const handleApplyCoupon = () => {
+    const code = coupon.trim().toUpperCase();
+    if (code === 'FIRST40') {
+      setCouponApplied(true);
+      setCouponError('');
+    } else {
+      setCouponApplied(false);
+      setCouponError('Invalid code. Use FIRST40 for 40% off your first order.');
+    }
   };
 
   if (isSubmitted) {
@@ -96,11 +121,12 @@ const Contact: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           {/* Header */}
           <motion.div
-            className="text-center mb-16"
+            className="relative text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <LiquidGlow color="#22c55e" size={200} />
             <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Get In{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
@@ -143,7 +169,7 @@ const Contact: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="text-base md:text-lg font-semibold text-white">Call Us</h3>
-                        <p className="text-sm md:text-base text-gray-400">+91 9310479532 / +91 93546 30932</p>
+                        <p className="text-sm md:text-base text-gray-400">+91 9310479532 and +91 93546 30932</p>
                       </div>
                     </div>
                   </div>
@@ -157,8 +183,8 @@ const Contact: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="text-base md:text-lg font-semibold text-white">Visit Us</h3>
-                        <p className="text-sm md:text-base text-gray-400">Near Signature street govindpuram,
-                          ghaziabad,U.P,India </p>
+                        <p className="text-sm md:text-base text-gray-400">Near Signature street govindpuram - 201015,
+                          ghaziabad,Uttar Pradesh, India </p>
                       </div>
                     </div>
                   </div>
@@ -187,6 +213,32 @@ const Contact: React.FC = () => {
                     <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Start Your Project</h2>
                     
                     <form onSubmit={handleSubmit} className="space-y-6">
+                      {/* First-order coupon */}
+                      <div className="rounded-lg border border-green-500/30 bg-green-500/10 p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                        <div className="text-green-300 text-sm md:text-base">
+                          <span className="font-semibold">40% OFF</span> on your first order with code <span className="font-mono">FIRST40</span>.
+                          {couponApplied && <span className="ml-2 text-green-400">Applied!</span>}
+                        </div>
+                        <div className="flex items-stretch gap-2">
+                          <input
+                            type="text"
+                            value={coupon}
+                            onChange={(e) => setCoupon(e.target.value)}
+                            placeholder="Enter coupon"
+                            className="px-3 py-2 rounded-md bg-white/5 border border-white/20 text-white text-sm focus:outline-none focus:border-green-400"
+                          />
+                          <button
+                            type="button"
+                            onClick={handleApplyCoupon}
+                            className="px-4 py-2 rounded-md bg-green-600 hover:bg-green-700 text-white text-sm font-semibold"
+                          >
+                            Apply
+                          </button>
+                        </div>
+                      </div>
+                      {couponError && (
+                        <div className="text-red-400 text-sm">{couponError}</div>
+                      )}
                       <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                         <div>
                           <label className="block text-sm font-medium text-gray-300 mb-2">

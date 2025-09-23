@@ -20,6 +20,7 @@ const GlowingLogo: React.FC<GlowingLogoProps> = ({ className = '', size = 'md' }
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
+      style={{ willChange: 'transform, opacity' }}
     >
       <motion.span
         className="bg-gradient-to-r from-red-500 via-pink-500 to-red-600 bg-clip-text text-transparent"

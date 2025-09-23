@@ -29,6 +29,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
       )}
       style={{
         boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        willChange: 'transform, opacity',
       }}
     >
       {children}

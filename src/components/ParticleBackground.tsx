@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const ParticleBackground: React.FC = () => {
-  const particles = Array.from({ length: 50 }, (_, i) => ({
+  const particles = Array.from({ length: 22 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
@@ -11,7 +11,7 @@ const ParticleBackground: React.FC = () => {
   }));
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none hidden md:block">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none hidden md:block will-change-transform">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}

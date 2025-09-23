@@ -2,40 +2,45 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code, Smartphone, Palette, Gamepad2 } from 'lucide-react';
 import Navigation from '../components/Navigation';
+import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
 import ParticleBackground from '../components/ParticleBackground';
+import port1 from "../saman/port1.png";
+import port2 from "../saman/port2.png";
 
 const Portfolio: React.FC = () => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
+      title: 'Native Company Profile App',
+      category: 'App Development',
+      icon: <Smartphone className="h-6 w-6" />,
+     
+      description: "In this project, I will showcase all the products of the company. I will create multiple pages, including a profile page, location page, and customer support page. Additionally, I will implement an offline chatbot that allows users to type their queries and receive instant replies.",
+       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['Flutter', 'Ui design', 'Tailwind CSS'],
+      liveUrl: 'perosnal project',
+    
+    },
+    {
+      title: 'Cerificate generator for YRIT pvt ltd',
       category: 'Web Development',
       icon: <Code className="h-6 w-6" />,
-      description: 'Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Tailwind CSS'],
-      liveUrl: '#',
-      githubUrl: '#'
+      description: 'In this website students and professionals who doing any course and intership in yrit pvt ltd, this system generate certificate of appriciation , completion accoring to need.',
+      image: port1,
+      technologies: ['React.js', 'tailwind css', 'Material Design', 'Vercel'],
+      liveUrl: 'https://yrit-certificate-generator.vercel.app/',
+       githubUrl: 'https://github.com/aryankumar06/YRIT_CertificateGenerator'
+      
     },
     {
-      title: 'Fitness Tracking App',
-      category: 'Android Development',
-      icon: <Smartphone className="h-6 w-6" />,
-      description: 'Native Android app for fitness tracking with workout plans, progress monitoring, and social features. Built with Kotlin and Firebase.',
-      image: 'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Kotlin', 'Firebase', 'Material Design', 'Room Database'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      title: 'Brand Identity System',
+      title: 'Growsphere',
       category: 'UI/UX Design',
       icon: <Palette className="h-6 w-6" />,
-      description: 'Complete brand identity and design system for a tech startup, including logo design, color palette, typography, and UI components.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Figma', 'Adobe Creative Suite', 'Design Systems', 'Prototyping'],
-      liveUrl: '#',
-      githubUrl: '#'
+      description: 'Developed high-fidelity mockups using a clean and modern design language. Focused on accessibility, color harmony, and micro-interactions for enhanced usability.',
+      image: port2,
+       technologies: ['Figma', 'Framer', 'Design Systems', 'Prototyping'],
+      liveUrl: 'https://akshaypundir.framer.website/homvio-case-study',
+     
     },
     {
       title: 'Space Adventure Game',
@@ -88,11 +93,12 @@ const Portfolio: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           {/* Header */}
           <motion.div
-            className="text-center mb-16"
+            className="relative text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <LiquidGlow color="#22d3ee" size={200} />
             <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Our{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
@@ -119,6 +125,7 @@ const Portfolio: React.FC = () => {
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
                       className="w-full h-32 md:h-44 lg:h-48 object-cover transition-transform duration-300 hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -150,17 +157,32 @@ const Portfolio: React.FC = () => {
                       ))}
                     </div>
                     
-                    <div className="flex space-x-2 md:space-x-3">
+                    <div className="relative flex space-x-2 md:space-x-3">
+                      <LiquidGlow color="#ef4444" size={150} />
                       <a
-                        href={project.liveUrl}
-                        className="flex-1 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-3 py-2 md:px-4 md:py-2 rounded-lg text-white text-xs md:text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300"
+                        href={project.liveUrl && project.liveUrl !== '#' ? project.liveUrl : undefined}
+                        target={project.liveUrl && project.liveUrl !== '#' ? '_blank' : undefined}
+                        rel={project.liveUrl && project.liveUrl !== '#' ? 'noopener noreferrer' : undefined}
+                        aria-disabled={(!project.liveUrl || project.liveUrl === '#') ? true : undefined}
+                        className={`relative z-10 flex-1 px-3 py-2 md:px-4 md:py-2 rounded-lg text-white text-xs md:text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300 ${
+                          project.liveUrl && project.liveUrl !== '#' 
+                            ? 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'
+                            : 'bg-gray-700/60 cursor-not-allowed'
+                        }`}
                       >
                         <ExternalLink className="h-4 w-4" />
                         Live Demo
                       </a>
                       <a
-                        href={project.githubUrl}
-                        className="px-3 py-2 md:px-4 md:py-2 border border-gray-600 hover:border-red-500 rounded-lg text-gray-300 hover:text-white text-xs md:text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300"
+                        href={project.githubUrl && project.githubUrl !== '#' ? project.githubUrl : undefined}
+                        target={project.githubUrl && project.githubUrl !== '#' ? '_blank' : undefined}
+                        rel={project.githubUrl && project.githubUrl !== '#' ? 'noopener noreferrer' : undefined}
+                        aria-disabled={(!project.githubUrl || project.githubUrl === '#') ? true : undefined}
+                        className={`px-3 py-2 md:px-4 md:py-2 border rounded-lg text-gray-300 text-xs md:text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300 ${
+                          project.githubUrl && project.githubUrl !== '#'
+                            ? 'border-gray-600 hover:border-red-500 hover:text-white'
+                            : 'border-gray-700/60 cursor-not-allowed'
+                        }`}
                       >
                         <Github className="h-4 w-4" />
                         Code
@@ -181,15 +203,15 @@ const Portfolio: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">500+</div>
+              <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">100+</div>
               <div className="text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">200+</div>
+              <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">85+</div>
               <div className="text-gray-400">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">5+</div>
+              <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">2+</div>
               <div className="text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">

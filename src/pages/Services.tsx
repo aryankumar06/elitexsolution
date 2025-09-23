@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Code, Smartphone, Palette, Gamepad2, Check, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
 import ParticleBackground from '../components/ParticleBackground';
 
 const Services: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [applyFirstOrder, setApplyFirstOrder] = useState(false);
+
+  // initialize from URL or localStorage
+  useEffect(() => {
+    const fromUrl = (searchParams.get('discount') || '').toLowerCase() === 'first40';
+    const stored = localStorage.getItem('firstOrderPreview') === 'true';
+    if (fromUrl || stored) {
+      setApplyFirstOrder(true);
+    }
+  }, []);
+
+  // persist to storage and URL
+  useEffect(() => {
+    localStorage.setItem('firstOrderPreview', String(applyFirstOrder));
+    const current = new URLSearchParams(searchParams);
+    if (applyFirstOrder) {
+      current.set('discount', 'first40');
+    } else {
+      current.delete('discount');
+    }
+    setSearchParams(current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [applyFirstOrder]);
+
+  const parsePrice = (price: string): number => {
+    const digits = price.replace(/[^0-9]/g, '');
+    const value = Number(digits);
+    return isNaN(value) ? 0 : value;
+  };
+
+  const formatPrice = (value: number): string => {
+    return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+  };
   const services = [
     {
       icon: <Code className="h-12 w-12" />,
@@ -21,9 +57,9 @@ const Services: React.FC = () => {
         'CMS Development'
       ],
       pricing: {
-        basic: { price: '$2,999', features: ['5 Pages', 'Responsive Design', 'Basic SEO', '3 Months Support'] },
-        advanced: { price: '$5,999', features: ['10 Pages', 'Custom CMS', 'Advanced SEO', 'E-commerce', '6 Months Support'] },
-        pro: { price: '$9,999', features: ['Unlimited Pages', 'Full Stack App', 'Advanced Features', 'API Integration', '12 Months Support'] }
+        basic: { price: '$120', features: ['5 Pages', 'Responsive Design', 'Basic SEO', '3 Months Support'] },
+        advanced: { price: '$200', features: ['10 Pages', 'Custom CMS', 'Advanced SEO', 'E-commerce', '6 Months Support'] },
+        pro: { price: '$400', features: ['Unlimited Pages', 'Full Stack App', 'Advanced Features', 'API Integration', '12 Months Support'] }
       }
     },
     {
@@ -32,16 +68,17 @@ const Services: React.FC = () => {
       description: 'Native Android applications with modern UI/UX and optimal performance.',
       features: [
         'Native Android Development',
-        'Kotlin & Java Programming',
+        'Flutter Programming',
         'Material Design Implementation',
         'Firebase Integration',
         'Play Store Optimization',
+        'Deploy on Playstore & App store',
         'App Maintenance & Updates'
       ],
       pricing: {
-        basic: { price: '$3,999', features: ['Basic App', '5 Screens', 'Local Storage', '3 Months Support'] },
-        advanced: { price: '$7,999', features: ['Advanced Features', '10 Screens', 'API Integration', 'Push Notifications', '6 Months Support'] },
-        pro: { price: '$12,999', features: ['Complex App', 'Unlimited Screens', 'Advanced Features', 'Backend Integration', '12 Months Support'] }
+        basic: { price: '$150', features: ['Basic App', '5 Screens', 'Local Storage', '3 Months Support'] },
+        advanced: { price: '$400', features: ['Advanced Features', '10 Screens', 'API Integration', 'Push Notifications', '6 Months Support'] },
+        pro: { price: '$600', features: ['Complex App', 'Unlimited Screens', 'Advanced Features', 'Backend Integration', '12 Months Support'] }
       }
     },
     {
@@ -57,9 +94,9 @@ const Services: React.FC = () => {
         'Design System Creation'
       ],
       pricing: {
-        basic: { price: '$1,999', features: ['5 Screens', 'Basic Wireframes', 'Visual Design', '2 Revisions'] },
-        advanced: { price: '$3,999', features: ['10 Screens', 'Interactive Prototype', 'User Testing', '4 Revisions'] },
-        pro: { price: '$6,999', features: ['Unlimited Screens', 'Complete Design System', 'Advanced Prototyping', 'Unlimited Revisions'] }
+        basic: { price: '$100', features: ['5 Screens', 'Basic Wireframes', 'Visual Design', '2 Revisions'] },
+        advanced: { price: '$250', features: ['10 Screens', 'Interactive Prototype', 'User Testing', '4 Revisions'] },
+        pro: { price: '$400', features: ['Unlimited Screens', 'Complete Design System', 'Advanced Prototyping', 'Unlimited Revisions'] }
       }
     },
     {
@@ -75,9 +112,9 @@ const Services: React.FC = () => {
         'Game Analytics'
       ],
       pricing: {
-        basic: { price: '$4,999', features: ['Simple 2D Game', '5 Levels', 'Basic Mechanics', '3 Months Support'] },
-        advanced: { price: '$9,999', features: ['Advanced 2D/3D Game', '15 Levels', 'Complex Mechanics', 'Multiplayer', '6 Months Support'] },
-        pro: { price: '$19,999', features: ['Premium Game', 'Unlimited Content', 'Advanced Features', 'Full Monetization', '12 Months Support'] }
+        basic: { price: '$1500', features: ['Simple 2D Game', '5 Levels', 'Basic Mechanics', '3 Months Support'] },
+        advanced: { price: '$2500', features: ['Advanced 2D/3D Game', '15 Levels', 'Complex Mechanics', 'Multiplayer', '6 Months Support'] },
+        pro: { price: '$4000', features: ['Premium Game', 'Unlimited Content', 'Advanced Features', 'Ad Mob', '12 Months Support'] }
       }
     }
   ];
@@ -91,11 +128,12 @@ const Services: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           {/* Header */}
           <motion.div
-            className="text-center mb-16"
+            className="relative text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <LiquidGlow color="#a855f7" size={200} />
             <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Our{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
@@ -105,6 +143,19 @@ const Services: React.FC = () => {
             <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
               Comprehensive tech solutions designed to transform your business with cutting-edge technology and innovative approaches.
             </p>
+
+            {/* First order discount toggle */}
+            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-2">
+              <span className="text-green-300 text-sm">Preview first-order discount (40% OFF)</span>
+              <button
+                type="button"
+                onClick={() => setApplyFirstOrder(v => !v)}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${applyFirstOrder ? 'bg-green-500' : 'bg-gray-600'}`}
+                aria-pressed={applyFirstOrder}
+              >
+                <span className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${applyFirstOrder ? 'translate-x-5' : 'translate-x-1'}`} />
+              </button>
+            </div>
           </motion.div>
 
           {/* Services */}
@@ -153,9 +204,16 @@ const Services: React.FC = () => {
                               <h3 className="text-base md:text-xl font-semibold text-white capitalize mb-1">
                                 {plan} Plan
                               </h3>
-                              <p className="text-2xl md:text-3xl font-bold text-red-400">
-                                {details.price}
-                              </p>
+                              {applyFirstOrder ? (
+                                <div>
+                                  <p className="text-xs text-gray-400 line-through">{details.price}</p>
+                                  <p className="text-2xl md:text-3xl font-bold text-red-400">
+                                    {formatPrice(Math.round(parsePrice(details.price) * 0.6))}
+                                  </p>
+                                </div>
+                              ) : (
+                                <p className="text-2xl md:text-3xl font-bold text-red-400">{details.price}</p>
+                              )}
                             </div>
                             <div className={`px-3 py-1 rounded-full text-xs font-medium ${
                               plan === 'basic' ? 'bg-blue-500/20 text-blue-400' :
@@ -166,6 +224,11 @@ const Services: React.FC = () => {
                             </div>
                           </div>
                           
+                          {/* First order coupon note */}
+                          <div className="mb-3 text-[11px] md:text-sm text-green-300">
+                            Use code <span className="font-mono">FIRST40</span> for <span className="font-semibold">40% OFF</span> on your first order.
+                          </div>
+
                           <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6">
                             {details.features.map((feature, featureIndex) => (
                               <li key={featureIndex} className="flex items-center space-x-2 text-[11px] md:text-sm text-gray-300">
@@ -175,13 +238,16 @@ const Services: React.FC = () => {
                             ))}
                           </ul>
                           
-                          <Link
+                          <div className="relative">
+                            <LiquidGlow color="#ef4444" size={160} />
+                            <Link
                             to={`/contact?service=${encodeURIComponent(service.title)}&plan=${plan}`}
-                            className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-3 py-2 md:px-4 md:py-3 rounded-lg text-white text-xs md:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300"
-                          >
-                            Choose {plan}
-                            <ArrowRight className="h-4 w-4" />
-                          </Link>
+                            className="relative z-10 w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-3 py-2 md:px-4 md:py-3 rounded-lg text-white text-xs md:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300"
+                            >
+                              Choose {plan}
+                              <ArrowRight className="h-4 w-4" />
+                            </Link>
+                          </div>
                         </div>
                       </GlassCard>
                     ))}

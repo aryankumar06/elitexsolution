@@ -6,6 +6,8 @@ import GlowingLogo from '../components/GlowingLogo';
 import ParticleBackground from '../components/ParticleBackground';
 import GlassCard from '../components/GlassCard';
 import Navigation from '../components/Navigation';
+import GradientOrbs from '../components/GradientOrbs';
+import LiquidGlow from '../components/LiquidGlow';
 
 const LandingPage: React.FC = () => {
   const services = [
@@ -17,7 +19,7 @@ const LandingPage: React.FC = () => {
     {
       icon: <Smartphone className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'Android Development',
-      description: 'Native Android apps with Kotlin and Java, delivering seamless mobile experiences for your users.'
+      description: 'Native Android apps with React native and Flutter, delivering seamless mobile experiences for your users.'
     },
     {
       icon: <Palette className="h-6 w-6 md:h-8 md:w-8" />,
@@ -33,32 +35,42 @@ const LandingPage: React.FC = () => {
 
   const reviews = [
     {
-      name: 'Sarah Johnson',
-      company: 'TechCorp Inc.',
+      name: 'garthvs',
+      country:"Africa",
+      source:"fiverr",
       rating: 5,
-      review: 'EliteX Solutions delivered an exceptional web application that exceeded our expectations. Their attention to detail and technical expertise is outstanding.',
+      review: 'Excellent work! He knew exactly what was needed and he delivered.',
       avatar: '👩‍💼'
     },
     {
-      name: 'Michael Chen',
-      company: 'StartupXYZ',
+      name: 'me_leonhart',
+      country:"Germany",
+      source:"fiverr",
       rating: 5,
-      review: 'The mobile app they developed for us has been a game-changer. Professional, responsive, and delivered on time.',
-      avatar: '👨‍💻'
+      review: "The job was done absolutely exceptional! It turned out even better than I imagined it. The delivery was done on time, with very clear and polite communication and high expertise. Thank you very much!!",
+        avatar: '👨‍💻'
     },
     {
-      name: 'Emily Rodriguez',
-      company: 'Creative Agency',
+      name: 'nachmanwende',
+      country:"Israel",
+      source:"fiverr",
       rating: 5,
-      review: 'Their UI/UX design transformed our brand identity. The team understood our vision perfectly and brought it to life.',
-      avatar: '👩‍🎨'
-    }
+      review: 'utsav developed the app I wanted for me. He guided me throughout the entire process and did everything in his power to ensure I got exactly what I needed. He was very proactive and gave me the feeling that he was a partner, not just a service provider. I highly recommend him. Nachman Wende',
+      avatar: '👩‍💼'
+    }, {
+      name: 'anas__009',
+      country:"Canada",
+      source:"fiverr",
+      rating: 5,
+      review: 'Aryan Kumar demonstrated commendable responsiveness and cooperation while working together. However, the delivery quality could align more closely with my expectations in the mobile app maintenance task.',
+      avatar: '👩‍💼'
+    }, 
   ];
 
   const stats = [
-    { number: '500+', label: 'Projects Completed' },
-    { number: '200+', label: 'Happy Clients' },
-    { number: '50+', label: 'Team Members' },
+    { number: '100+', label: 'Projects Completed' },
+    { number: '85+', label: 'Happy Clients' },
+    { number: '20+', label: 'Team Members' },
     { number: '99%', label: 'Client Satisfaction' }
   ];
 
@@ -70,18 +82,20 @@ const LandingPage: React.FC = () => {
       {/* Hero Section */}
       <section className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative">
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
+        <GradientOrbs />
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
-            className="text-center max-w-5xl mx-auto"
+            className="relative text-center max-w-5xl mx-auto overflow-visible"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
+            <LiquidGlow color="#ef4444" size={260} />
             <GlowingLogo size="lg" className="mb-6 md:mb-8" />
             
             <motion.h1
-              className="text-xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent"
+              className="text-7xl md:text-9xl lg:text-5xl font-bold mb-4 md:mb-6 pb-1 leading-[1.15] md:leading-[1.1] bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
@@ -169,14 +183,16 @@ const LandingPage: React.FC = () => {
 
       {/* Services Section */}
       <section className="py-14 md:py-20 relative">
+        <GradientOrbs className="opacity-70" />
         <div className="container mx-auto px-6">
           <motion.div
-            className="text-center mb-16"
+            className="relative text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
+            <LiquidGlow color="#a855f7" size={220} />
             <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Our{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
@@ -211,14 +227,16 @@ const LandingPage: React.FC = () => {
       {/* Reviews Section */}
       <section className="py-14 md:py-20 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/10 to-blue-900/10" />
+        <GradientOrbs className="opacity-60" />
         <div className="container mx-auto px-6 relative">
           <motion.div
-            className="text-center mb-16"
+            className="relative text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
+            <LiquidGlow color="#22d3ee" size={220} />
             <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Client{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
@@ -245,7 +263,8 @@ const LandingPage: React.FC = () => {
                       <span className="text-2xl md:text-3xl mr-3">{review.avatar}</span>
                       <div>
                         <h4 className="font-semibold text-white text-sm md:text-base">{review.name}</h4>
-                        <p className="text-xs md:text-sm text-gray-400">{review.company}</p>
+                        <p className="text-xs md:text-sm text-gray-400">{review.country}</p>
+                        <p className="text-xs md:text-sm text-gray-400">{review.source}</p>
                       </div>
                     </div>
                     
@@ -289,11 +308,11 @@ const LandingPage: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Award className="h-5 w-5 text-yellow-400" />
-                  <span className="text-gray-300">Award-winning design & development</span>
+                  <span className="text-gray-300">Morden - minimal design & development</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-green-400" />
-                  <span className="text-gray-300">Dedicated project management</span>
+                  <span className="text-gray-300">Dedicated project management team</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Zap className="h-5 w-5 text-blue-400" />
@@ -339,13 +358,13 @@ const LandingPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
         <div className="container mx-auto px-6 relative">
           <motion.div
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-4xl mx-auto overflow-visible"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 pb-1 leading-[1.12] md:leading-[1.08] bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Ready to Build Something{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Amazing?
@@ -372,7 +391,7 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <GlowingLogo size="sm" />
             <p className="text-gray-400 mt-4 md:mt-0">
-              © 2025 EliteX Solutions. All rights reserved.
+              © 2025 eliteXsolutions. All rights reserved.
             </p>
           </div>
         </div>
