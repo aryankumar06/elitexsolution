@@ -100,7 +100,7 @@ const LandingPage: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
             >
-              Transforming Ideas into{' '}
+              Transformingggggg Ideas into{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Digital Excellence
               </span>
