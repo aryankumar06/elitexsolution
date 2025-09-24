@@ -95,12 +95,12 @@ const LandingPage: React.FC = () => {
             <GlowingLogo size="lg" className="mb-6 md:mb-8" />
             
             <motion.h1
-              className="text-7xl md:text-9xl lg:text-5xl font-bold mb-4 md:mb-6 pb-1 leading-[1.15] md:leading-[1.1] bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-3 sm:mb-4 md:mb-6 pb-1 leading-[1.2] sm:leading-[1.15] md:leading-[1.1] bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
             >
-              Transformingggggg Ideas into{' '}
+              Transforming Ideas into{' '}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
                 Digital Excellence
               </span>
@@ -184,7 +184,7 @@ const LandingPage: React.FC = () => {
       {/* Services Section */}
       <section className="py-14 md:py-20 relative">
         <GradientOrbs className="opacity-70" />
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             className="relative text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -228,7 +228,7 @@ const LandingPage: React.FC = () => {
       <section className="py-14 md:py-20 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/10 to-blue-900/10" />
         <GradientOrbs className="opacity-60" />
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div
             className="relative text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -287,7 +287,7 @@ const LandingPage: React.FC = () => {
 
       {/* Why Choose Us Section */}
       <section className="py-20 relative">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -356,7 +356,7 @@ const LandingPage: React.FC = () => {
       {/* CTA Section */}
       <section className="py-20 relative">
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div
             className="text-center max-w-4xl mx-auto overflow-visible"
             initial={{ opacity: 0, y: 30 }}
@@ -387,10 +387,10 @@ const LandingPage: React.FC = () => {
 
       {/* Footer */}
       <footer className="py-12 border-t border-gray-800">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-2">
             <GlowingLogo size="sm" />
-            <p className="text-gray-400 mt-4 md:mt-0">
+            <p className="text-gray-400 mt-2 md:mt-0">
               © 2025 eliteXsolutions. All rights reserved.
             </p>
           </div>
