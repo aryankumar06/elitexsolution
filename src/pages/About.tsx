@@ -7,13 +7,14 @@ import LiquidGlow from '../components/LiquidGlow';
 import profil1 from "../saman/profile22.jpeg";
 import profil2 from "../saman/utsav.jpg";
 import profil3 from "../saman/akshay.jpg";
+import profil4 from "../saman/sourav.jpg";
 
 const team = [
   { name: 'Aryan Kumar', role: 'Founder & CEO  ',skill:"(Lead Web Developer)", photo: profil1 },
   { name: 'Utsav Rana', role: 'Co-founder & CTO',skill:"(Senior Mobile Developer)", photo: profil2 },
   { name: 'Akshay Pundir ', role: 'Design Lead', photo: profil3 },
   { name: 'Abhinav Singh', role: 'Senior Web Developer', photo: "" },
-  { name: 'Sourav Jangid', role: 'Lead Software Engineer', photo: "" },
+  { name: 'Sourav Jangid', role: 'Lead Software Engineer', photo: profil4 },
 ];
 
 const About: React.FC = () => {

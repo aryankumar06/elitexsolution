@@ -5,8 +5,9 @@ import Navigation from '../components/Navigation';
 import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
 import ParticleBackground from '../components/ParticleBackground';
-import port1 from "../saman/port1.png";
+import port3 from "../saman/port3.png";
 import port2 from "../saman/port2.png";
+
 
 const Portfolio: React.FC = () => {
   const projects = [
@@ -22,14 +23,14 @@ const Portfolio: React.FC = () => {
     
     },
     {
-      title: 'Cerificate generator for YRIT pvt ltd',
+      title: 'Organic Food delivery website',
       category: 'Web Development',
       icon: <Code className="h-6 w-6" />,
-      description: 'In this website students and professionals who doing any course and intership in yrit pvt ltd, this system generate certificate of appriciation , completion accoring to need.',
-      image: port1,
-      technologies: ['React.js', 'tailwind css', 'Material Design', 'Vercel'],
-      liveUrl: 'https://yrit-certificate-generator.vercel.app/',
-       githubUrl: 'https://github.com/aryankumar06/YRIT_CertificateGenerator'
+      description: 'Organic Food Service is a food delivery application that allows users to order organic food online. It includes features for user registration, product browsing, cart management, and order processing.',
+      image: port3,
+      technologies: ['React.js', 'tailwind css', 'Razorpay', 'Vercel'],
+      liveUrl: 'https://oraganoservice.vercel.app/',
+       githubUrl: 'https://github.com/SouravJangid/OrganoService'
       
     },
     {
