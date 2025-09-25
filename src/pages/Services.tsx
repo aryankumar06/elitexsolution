@@ -78,7 +78,7 @@ const Services: React.FC = () => {
         'App Maintenance & Updates'
       ],
       pricing: {
-        basic: { price: '$150', features: ['Basic App', '5 Screens', 'Local Storage', '3 Months Support'] },
+        basic: { price: '$200', features: ['Basic App', '5 Screens', 'Local Storage', '3 Months Support'] },
         advanced: { price: '$400', features: ['Advanced Features', '10 Screens', 'API Integration', 'Push Notifications', '6 Months Support'] },
         pro: { price: '$600', features: ['Complex App', 'Unlimited Screens', 'Advanced Features', 'Backend Integration', '12 Months Support'] }
       }
