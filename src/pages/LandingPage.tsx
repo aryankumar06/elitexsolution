@@ -75,7 +75,7 @@ const LandingPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-black text-white overflow-hidden pt-14 md:pt-16">
       <ParticleBackground />
       <Navigation />
       
