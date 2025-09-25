@@ -8,13 +8,19 @@ import profil1 from "../saman/profile22.jpeg";
 import profil2 from "../saman/utsav.jpg";
 import profil3 from "../saman/akshay.jpg";
 import profil4 from "../saman/sourav.jpg";
+import profil5 from "../saman/harshit.jpg";
+import profil6 from "../saman/vishal chaurasia.jpg";
+import profil7 from "../saman/Manish Kumar.jpg";
 
 const team = [
   { name: 'Aryan Kumar', role: 'Founder & CEO  ',skill:"(Lead Web Developer)", photo: profil1 },
   { name: 'Utsav Rana', role: 'Co-founder & CTO',skill:"(Senior Mobile Developer)", photo: profil2 },
   { name: 'Akshay Pundir ', role: 'Design Lead', photo: profil3 },
-  { name: 'Abhinav Singh', role: 'Senior Web Developer', photo: "" },
   { name: 'Sourav Jangid', role: 'Lead Software Engineer', photo: profil4 },
+  { name: 'Harshit Sharma', role: 'Senior Frontend Developer', photo: profil5},
+  { name: 'vishal chaurasia', role: 'Digital Marketing Lead', photo: profil6},
+  { name: 'Manish Kuma', role: 'Cyber Security Expert', photo: profil7},
+  
 ];
 
 const About: React.FC = () => {
