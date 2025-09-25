@@ -5,6 +5,8 @@ import Navigation from '../components/Navigation';
 import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
 import ParticleBackground from '../components/ParticleBackground';
+import Button3D from '../components/Button3D';
+import Footer from '../components/Footer';
 import port3 from "../saman/port3.png";
 import port2 from "../saman/port2.png";
 
@@ -160,20 +162,17 @@ const Portfolio: React.FC = () => {
                     
                     <div className="relative flex space-x-2 md:space-x-3">
                       <LiquidGlow color="#ef4444" size={150} />
-                      <a
-                        href={project.liveUrl && project.liveUrl !== '#' ? project.liveUrl : undefined}
-                        target={project.liveUrl && project.liveUrl !== '#' ? '_blank' : undefined}
-                        rel={project.liveUrl && project.liveUrl !== '#' ? 'noopener noreferrer' : undefined}
-                        aria-disabled={(!project.liveUrl || project.liveUrl === '#') ? true : undefined}
-                        className={`relative z-10 flex-1 px-3 py-2 md:px-4 md:py-2 rounded-lg text-white text-xs md:text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300 ${
-                          project.liveUrl && project.liveUrl !== '#' 
-                            ? 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800'
-                            : 'bg-gray-700/60 cursor-not-allowed'
-                        }`}
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        Live Demo
-                      </a>
+                      {project.liveUrl && project.liveUrl !== '#' ? (
+                        <Button3D as="a" href={project.liveUrl} size="sm" className="flex-1 text-center">
+                          <ExternalLink className="h-4 w-4" />
+                          Live Demo
+                        </Button3D>
+                      ) : (
+                        <div className="flex-1 px-3 py-2 md:px-4 md:py-2 rounded-lg text-white text-xs md:text-sm font-medium flex items-center justify-center gap-2 bg-gray-700/60 cursor-not-allowed">
+                          <ExternalLink className="h-4 w-4" />
+                          Live Demo
+                        </div>
+                      )}
                       <a
                         href={project.githubUrl && project.githubUrl !== '#' ? project.githubUrl : undefined}
                         target={project.githubUrl && project.githubUrl !== '#' ? '_blank' : undefined}
@@ -235,16 +234,14 @@ const Portfolio: React.FC = () => {
             <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
               Let's discuss your ideas and create something amazing together. Our team is ready to bring your vision to life.
             </p>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 md:px-8 md:py-4 rounded-lg text-sm md:text-lg font-semibold transition-all duration-300 transform hover:scale-105"
-            >
+            <Button3D as="a" href="/contact" size="sm">
               Start Your Project
               <ExternalLink className="h-5 w-5" />
-            </a>
+            </Button3D>
           </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -7,6 +7,8 @@ import Navigation from '../components/Navigation';
 import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
 import ParticleBackground from '../components/ParticleBackground';
+import Button3D from '../components/Button3D';
+import Footer from '../components/Footer';
 
 const Services: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -240,12 +242,11 @@ const Services: React.FC = () => {
                           
                           <div className="relative">
                             <LiquidGlow color="#ef4444" size={160} />
-                            <Link
-                            to={`/contact?service=${encodeURIComponent(service.title)}&plan=${plan}`}
-                            className="relative z-10 w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-3 py-2 md:px-4 md:py-3 rounded-lg text-white text-xs md:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300"
-                            >
-                              Choose {plan}
-                              <ArrowRight className="h-4 w-4" />
+                            <Link to={`/contact?service=${encodeURIComponent(service.title)}&plan=${plan}`} className="relative z-10 w-full">
+                              <Button3D size="sm" className="w-full">
+                                Choose {plan}
+                                <ArrowRight className="h-4 w-4" />
+                              </Button3D>
                             </Link>
                           </div>
                         </div>
@@ -271,16 +272,16 @@ const Services: React.FC = () => {
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
               Every project is unique. Let's discuss your specific requirements and create a tailored solution for your business.
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
-            >
-              Get Custom Quote
-              <ArrowRight className="h-5 w-5" />
+            <Link to="/contact" className="inline-block">
+              <Button3D size="sm">
+                Get Custom Quote
+                <ArrowRight className="h-5 w-5" />
+              </Button3D>
             </Link>
           </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

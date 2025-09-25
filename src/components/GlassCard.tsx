@@ -1,21 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
+import Tilt3D from './Tilt3D';
 
 interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
   hover?: boolean;
   delay?: number;
+  tilt?: boolean; // enable 3D tilt by default
 }
 
 const GlassCard: React.FC<GlassCardProps> = ({ 
   children, 
   className = '', 
   hover = true, 
-  delay = 0 
+  delay = 0,
+  tilt = true,
 }) => {
-  return (
+  const card = (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -35,6 +38,10 @@ const GlassCard: React.FC<GlassCardProps> = ({
       {children}
     </motion.div>
   );
+
+  if (!tilt) return card;
+
+  return <Tilt3D>{card}</Tilt3D>;
 };
 
 export default GlassCard;

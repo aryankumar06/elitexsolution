@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import GlowingLogo from './GlowingLogo';
 import BrandLogo from './BrandLogo';
+import Button3D from './Button3D';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
@@ -49,26 +50,39 @@ const Navigation: React.FC = () => {
               >
                 <span className="relative z-10">{item.label}</span>
                 {location.pathname === item.path && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute left-1/2 -bottom-0.5 h-0.5 w-0 rounded-full"
-                    initial={false}
-                    animate={{
-                      left: '10%',
-                      width: '80%',
-                      background: `linear-gradient(90deg, ${tabColorMap[item.path]} 0%, #ffffff 100%)`,
-                    }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                  />
+                  <>
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute left-1/2 -bottom-0.5 h-0.5 w-0 rounded-full"
+                      initial={false}
+                      animate={{
+                        left: '10%',
+                        width: '80%',
+                        background: `linear-gradient(90deg, ${tabColorMap[item.path]} 0%, #ffffff 100%)`,
+                        translateZ: 2,
+                      }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    />
+                    <motion.span
+                      className="absolute left-1/2 -bottom-0.5 h-2 w-0 rounded-full blur-md opacity-60"
+                      initial={false}
+                      animate={{
+                        left: '10%',
+                        width: '80%',
+                        background: `linear-gradient(90deg, ${tabColorMap[item.path]} 0%, rgba(255,255,255,0.6) 100%)`,
+                      }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                      aria-hidden
+                    />
+                  </>
                 )}
               </Link>
             ))}
             
-            <Link
-              to="/contact"
-              className="shrink-0 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-3 py-1.5 md:px-4 md:py-2 rounded-full text-white text-xs md:text-sm font-medium transition-all"
-            >
-              Get Quote
+            <Link to="/contact" className="shrink-0">
+              <Button3D size="sm">
+                Get Quote
+              </Button3D>
             </Link>
 
             {/* Mobile fade scroll hints */}

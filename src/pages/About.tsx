@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import ParticleBackground from '../components/ParticleBackground';
 import GlassCard from '../components/GlassCard';
 import LiquidGlow from '../components/LiquidGlow';
+import Footer from '../components/Footer';
 import profil1 from "../saman/profile22.jpeg";
 import profil2 from "../saman/utsav.jpg";
 import profil3 from "../saman/akshay.jpg";
@@ -80,7 +81,7 @@ const About: React.FC = () => {
             viewport={{ once: true }}
           >
             <LiquidGlow color="#22d3ee" size={200} />
-            <h2 className="text-2xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">Our Elite Team</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Our Elite Team</h2>
             <p className="text-gray-400 text-sm md:text-base">Small, focused, and deeply committed to quality.</p>
           </motion.div>
 
@@ -103,6 +104,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

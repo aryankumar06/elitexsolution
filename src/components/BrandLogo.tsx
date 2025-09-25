@@ -6,7 +6,7 @@ interface BrandLogoProps {
   size?: number; // pixel height
 }
 
-const BrandLogo: React.FC<BrandLogoProps> = ({ className = '', size = 100 }) => {
+const BrandLogo: React.FC<BrandLogoProps> = ({ className = '', size = 120 }) => {
   return (
     <div className={`flex items-center ${className}`} style={{ height: size }}>
       <img

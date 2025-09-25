@@ -8,6 +8,11 @@ import GlassCard from '../components/GlassCard';
 import Navigation from '../components/Navigation';
 import GradientOrbs from '../components/GradientOrbs';
 import LiquidGlow from '../components/LiquidGlow';
+import ParallaxLayer from '../components/ParallaxLayer';
+import Button3D from '../components/Button3D';
+import Footer from '../components/Footer';
+import ResponseGuarantee from '../components/ResponseGuarantee';
+import DevelopmentFlow from '../components/DevelopmentFlow';
 
 const LandingPage: React.FC = () => {
   const services = [
@@ -81,8 +86,12 @@ const LandingPage: React.FC = () => {
       
       {/* Hero Section */}
       <section className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
-        <GradientOrbs />
+        <ParallaxLayer speed={0.1} className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={-0.05} className="pointer-events-none">
+          <GradientOrbs />
+        </ParallaxLayer>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
@@ -124,17 +133,21 @@ const LandingPage: React.FC = () => {
             >
               <Link
                 to="/services"
-                className="group bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 md:px-8 md:py-4 rounded-lg text-sm md:text-lg font-semibold flex items-center gap-2 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+                className="group"
               >
-                Explore Services
-                <ArrowRight className="h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
+                <Button3D size="sm">
+                  Explore Services
+                  <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
+                </Button3D>
               </Link>
               
               <Link
                 to="/contact"
-                className="px-6 py-3 md:px-8 md:py-4 rounded-lg text-sm md:text-lg font-semibold border-2 border-gray-600 hover:border-red-500 transition-colors duration-300"
+                className="group"
               >
-                Get Quote
+                <Button3D size="sm" className="bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700">
+                  Get Quote
+                </Button3D>
               </Link>
             </motion.div>
           </motion.div>
@@ -160,7 +173,10 @@ const LandingPage: React.FC = () => {
 
       {/* Stats Section */}
       <section className="py-20 relative">
-        <div className="container mx-auto px-4 md:px-6">
+        <ParallaxLayer speed={0.06} className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/2 to-transparent opacity-[0.02]" />
+        </ParallaxLayer>
+        <div className="container mx-auto px-4 md:px-6 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -206,27 +222,35 @@ const LandingPage: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {services.map((service, index) => (
-              <GlassCard key={index} delay={index * 0.1}>
-                <div className="p-3 sm:p-4 md:p-6 h-full">
-                  <div className="text-red-400 mb-3 md:mb-4">
-                    {service.icon}
+                <GlassCard key={index} delay={index * 0.1}>
+                  <div className="p-3 sm:p-4 md:p-6 h-full">
+                    <div className="text-red-400 mb-3 md:mb-4">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-base md:text-xl font-semibold mb-1.5 md:mb-3 text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-300 text-xs md:text-base leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="text-base md:text-xl font-semibold mb-1.5 md:mb-3 text-white">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-300 text-xs md:text-base leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </GlassCard>
+                </GlassCard>
             ))}
+          </div>
+
+          {/* Response & Flow */}
+          <div className="mt-10 md:mt-14 space-y-6 md:space-y-8">
+            <ResponseGuarantee />
+            <DevelopmentFlow />
           </div>
         </div>
       </section>
 
       {/* Reviews Section */}
       <section className="py-14 md:py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/10 to-blue-900/10" />
+        <ParallaxLayer speed={0.08} className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-red-900/10 to-blue-900/10" />
+        </ParallaxLayer>
         <GradientOrbs className="opacity-60" />
         <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div
@@ -338,13 +362,15 @@ const LandingPage: React.FC = () => {
                   </div>
                   
                   <div className="text-center">
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 rounded-lg text-white font-semibold transition-all duration-300 transform hover:scale-105"
-                    >
-                      Get Free Consultation
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
+                      <Link
+                        to="/contact"
+                        className="inline-block"
+                      >
+                        <Button3D size="sm">
+                          Get Free Consultation
+                          <ArrowRight className="h-4 w-4" />
+                        </Button3D>
+                      </Link>
                   </div>
                 </div>
               </GlassCard>
@@ -355,7 +381,9 @@ const LandingPage: React.FC = () => {
 
       {/* CTA Section */}
       <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
+        <ParallaxLayer speed={0.1} className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
+        </ParallaxLayer>
         <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div
             className="text-center max-w-4xl mx-auto overflow-visible"
@@ -374,28 +402,17 @@ const LandingPage: React.FC = () => {
               Transform your vision into reality with our expert team. Let's create digital solutions that drive your business forward.
             </p>
             
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
-            >
-              Start Your Project
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <Link to="/contact" className="inline-block">
+              <Button3D size="sm">
+                Start Your Project
+                <ArrowRight className="h-5 w-5" />
+              </Button3D>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-gray-800">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-2">
-            <GlowingLogo size="sm" />
-            <p className="text-gray-400 mt-2 md:mt-0">
-              © 2025 eliteXsolutions. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

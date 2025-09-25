@@ -7,6 +7,8 @@ import LiquidGlow from '../components/LiquidGlow';
 import GlassCard from '../components/GlassCard';
 import ParticleBackground from '../components/ParticleBackground';
 import emailjs from '@emailjs/browser';
+import Button3D from '../components/Button3D';
+import Footer from '../components/Footer';
 
 const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID
 const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
@@ -125,9 +127,9 @@ const Contact: React.FC = () => {
           </p>
           <button
             onClick={() => setIsSubmitted(false)}
-            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-8 py-3 rounded-lg text-white font-semibold transition-all duration-300"
+            className="bg-transparent p-0 border-0"
           >
-            Send Another Message
+            <Button3D size="sm">Send Another Message</Button3D>
           </button>
         </motion.div>
       </div>
@@ -419,10 +421,11 @@ const Contact: React.FC = () => {
                         />
                       </div>
 
-                      <button
+                      <Button3D
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-6 py-3 md:px-8 md:py-4 rounded-lg text-white text-sm md:text-base font-semibold flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        size="sm"
+                        className="w-full"
                       >
                         {isSubmitting ? (
                           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -432,7 +435,7 @@ const Contact: React.FC = () => {
                             <Send className="h-5 w-5" />
                           </>
                         )}
-                      </button>
+                      </Button3D>
                       {
                         submitError.length > 0 ? 
                           <div className='w-full text-center text-sm text-pink-600 py-4'>
@@ -448,6 +451,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
