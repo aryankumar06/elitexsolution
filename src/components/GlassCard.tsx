@@ -23,19 +23,30 @@ const GlassCard: React.FC<GlassCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
-      whileHover={hover ? { y: -3, scale: 1.01 } : undefined}
+      whileHover={hover ? { y: -8, scale: 1.02 } : undefined}
       className={clsx(
-        'backdrop-blur-md md:backdrop-blur-lg bg-gradient-to-br from-white/10 to-white/5',
-        'border border-white/15 md:border-white/20 rounded-lg md:rounded-xl shadow-lg md:shadow-xl',
-        'hover:border-red-500/50 transition-all duration-300',
+        'group relative overflow-hidden',
+        'backdrop-blur-xl bg-gradient-to-br from-white/[0.12] via-white/[0.08] to-white/[0.04]',
+        'border border-white/20 rounded-2xl shadow-glass',
+        'hover:border-red-500/60 hover:shadow-glow-md transition-all duration-500',
+        'before:absolute before:inset-0 before:rounded-2xl',
+        'before:bg-gradient-to-br before:from-white/10 before:to-transparent before:opacity-0',
+        'hover:before:opacity-100 before:transition-opacity before:duration-500',
         className
       )}
       style={{
-        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
         willChange: 'transform, opacity',
       }}
     >
-      {children}
+      {/* Shimmer effect on hover */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10">
+        {children}
+      </div>
     </motion.div>
   );
 

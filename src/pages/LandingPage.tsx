@@ -104,19 +104,19 @@ const LandingPage: React.FC = () => {
             <GlowingLogo size="lg" className="mb-6 md:mb-8" />
             
             <motion.h1
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-3 sm:mb-4 md:mb-6 pb-1 leading-[1.2] sm:leading-[1.15] md:leading-[1.1] bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 pb-1 leading-[1.15] sm:leading-[1.12] md:leading-[1.08] bg-gradient-to-br from-white via-gray-50 to-gray-200 bg-clip-text text-transparent tracking-tight"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
             >
               Transforming Ideas into{' '}
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
                 Digital Excellence
               </span>
             </motion.h1>
 
             <motion.p
-              className="text-base md:text-2xl text-gray-300 mb-6 md:mb-8 leading-relaxed"
+              className="text-base md:text-2xl text-gray-300 mb-8 md:mb-10 leading-relaxed max-w-4xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 1 }}
@@ -126,7 +126,7 @@ const LandingPage: React.FC = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
@@ -187,10 +187,10 @@ const LandingPage: React.FC = () => {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-400">{stat.label}</div>
+                <div className="text-gray-400 text-sm md:text-base">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -209,28 +209,28 @@ const LandingPage: React.FC = () => {
             viewport={{ once: true }}
           >
             <LiquidGlow color="#a855f7" size={220} />
-            <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent tracking-tight">
               Our{' '}
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
                 Services
               </span>
             </h2>
-            <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Comprehensive tech solutions designed to elevate your business with cutting-edge technology and innovative approaches.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {services.map((service, index) => (
                 <GlassCard key={index} delay={index * 0.1}>
-                  <div className="p-3 sm:p-4 md:p-6 h-full">
-                    <div className="text-red-400 mb-3 md:mb-4">
+                  <div className="p-6 sm:p-6 md:p-8 h-full">
+                    <div className="text-red-400 mb-4 md:mb-6">
                       {service.icon}
                     </div>
-                    <h3 className="text-base md:text-xl font-semibold mb-1.5 md:mb-3 text-white">
+                    <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 text-white">
                       {service.title}
                     </h3>
-                    <p className="text-gray-300 text-xs md:text-base leading-relaxed">
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -261,9 +261,9 @@ const LandingPage: React.FC = () => {
             viewport={{ once: true }}
           >
             <LiquidGlow color="#22d3ee" size={220} />
-            <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent tracking-tight">
               Client{' '}
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
                 Reviews
               </span>
             </h2>
@@ -319,13 +319,13 @@ const LandingPage: React.FC = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent tracking-tight">
                 Why Choose{' '}
-                <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
                   EliteX?
                 </span>
               </h2>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed">
                 We combine technical expertise with creative innovation to deliver solutions that not only meet your requirements but exceed your expectations.
               </p>
               
@@ -392,13 +392,13 @@ const LandingPage: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 pb-1 leading-[1.12] md:leading-[1.08] bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 pb-1 leading-[1.12] md:leading-[1.08] bg-gradient-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent tracking-tight">
               Ready to Build Something{' '}
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
                 Amazing?
               </span>
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-10 leading-relaxed">
               Transform your vision into reality with our expert team. Let's create digital solutions that drive your business forward.
             </p>
             

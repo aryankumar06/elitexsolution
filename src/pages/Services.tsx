@@ -122,7 +122,15 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Diwali Decorative Elements */}
+      <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30">🪔</div>
+      <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30 animation-delay-300">✨</div>
+      <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30 animation-delay-500">🎆</div>
+      <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30 animation-delay-700">🪔</div>
+      <div className="fixed top-1/2 left-5 text-2xl animate-pulse opacity-20">🎉</div>
+      <div className="fixed top-1/3 right-10 text-2xl animate-pulse opacity-20 animation-delay-400">🎊</div>
+      
       <ParticleBackground />
       <Navigation />
       
@@ -136,28 +144,48 @@ const Services: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <LiquidGlow color="#a855f7" size={200} />
-            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <div className="inline-block mb-2">
+              <span className="text-3xl md:text-4xl">🪔</span>
+            </div>
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-orange-300 via-yellow-200 to-orange-300 bg-clip-text text-transparent">
               Our{' '}
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-400 via-yellow-500 to-red-500 bg-clip-text text-transparent">
                 Services
               </span>
+              {' '}🎉
             </h1>
             <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
               Comprehensive tech solutions designed to transform your business with cutting-edge technology and innovative approaches.
             </p>
 
-            {/* First order discount toggle */}
-            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-2">
-              <span className="text-green-300 text-sm">Preview first-order discount (40% OFF)</span>
-              <button
-                type="button"
-                onClick={() => setApplyFirstOrder(v => !v)}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${applyFirstOrder ? 'bg-green-500' : 'bg-gray-600'}`}
-                aria-pressed={applyFirstOrder}
-              >
-                <span className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${applyFirstOrder ? 'translate-x-5' : 'translate-x-1'}`} />
-              </button>
-            </div>
+            {/* Diwali Discount Toggle */}
+            <motion.div 
+              className="mt-8 relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="inline-flex items-center gap-3 rounded-2xl border-2 border-orange-500/40 bg-gradient-to-r from-orange-500/20 via-yellow-500/20 to-red-500/20 px-6 py-3 shadow-lg shadow-orange-500/20 backdrop-blur-sm">
+                <span className="text-2xl animate-pulse">🪔</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                  <span className="text-orange-300 text-sm md:text-base font-semibold">
+                    ✨ Diwali Special: <span className="text-yellow-300 text-lg md:text-xl font-bold">40% OFF</span> on First Order! 🎉
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setApplyFirstOrder(v => !v)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 ${applyFirstOrder ? 'bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-orange-500/50' : 'bg-gray-600'}`}
+                    aria-label={applyFirstOrder ? 'Disable Diwali discount preview' : 'Enable Diwali discount preview'}
+                  >
+                    <span className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow-md ${applyFirstOrder ? 'translate-x-5' : 'translate-x-1'}`} />
+                  </button>
+                </div>
+                <span className="text-2xl animate-pulse">🪔</span>
+              </div>
+              {/* Sparkle effects */}
+              <div className="absolute -top-1 -left-1 text-yellow-400 text-xs animate-pulse">✨</div>
+              <div className="absolute -bottom-1 -right-1 text-orange-400 text-xs animate-pulse delay-75">✨</div>
+            </motion.div>
           </motion.div>
 
           {/* Services */}
@@ -170,10 +198,10 @@ const Services: React.FC = () => {
                 transition={{ delay: index * 0.1, duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+                <div className="space-y-8">
                   {/* Service Info */}
-                  <div>
-                    <div className="flex items-center mb-3 md:mb-6">
+                  <div className="max-w-4xl mx-auto text-center lg:text-left">
+                    <div className="flex items-center justify-center lg:justify-start mb-3 md:mb-6">
                       <div className="text-red-400 mr-4">
                         {React.cloneElement(service.icon as React.ReactElement, { className: 'h-8 w-8 md:h-12 md:w-12' })}
                       </div>
@@ -186,7 +214,7 @@ const Services: React.FC = () => {
                       {service.description}
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-4">
                       {service.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center space-x-3">
                           <Check className="h-4 w-4 md:h-5 md:w-5 text-green-400 flex-shrink-0" />
@@ -197,41 +225,41 @@ const Services: React.FC = () => {
                   </div>
 
                   {/* Pricing Cards */}
-                  <div className="grid gap-3 md:gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 lg:gap-6">
                     {Object.entries(service.pricing).map(([plan, details]) => (
                       <GlassCard key={plan}>
-                        <div className="p-4 md:p-6">
-                          <div className="flex justify-between items-start mb-4">
-                            <div>
-                              <h3 className="text-base md:text-xl font-semibold text-white capitalize mb-1">
+                        <div className="p-4 md:p-5 lg:p-6 flex flex-col h-full">
+                          <div className="mb-4">
+                            <div className="flex justify-between items-start mb-2">
+                              <h3 className="text-base md:text-lg lg:text-xl font-semibold text-white capitalize">
                                 {plan} Plan
                               </h3>
-                              {applyFirstOrder ? (
-                                <div>
-                                  <p className="text-xs text-gray-400 line-through">{details.price}</p>
-                                  <p className="text-2xl md:text-3xl font-bold text-red-400">
-                                    {formatPrice(Math.round(parsePrice(details.price) * 0.6))}
-                                  </p>
-                                </div>
-                              ) : (
-                                <p className="text-2xl md:text-3xl font-bold text-red-400">{details.price}</p>
-                              )}
+                              <div className={`px-2 py-1 rounded-full text-[10px] md:text-xs font-medium whitespace-nowrap ${
+                                plan === 'basic' ? 'bg-blue-500/20 text-blue-400' :
+                                plan === 'advanced' ? 'bg-purple-500/20 text-purple-400' :
+                                'bg-red-500/20 text-red-400'
+                              }`}>
+                                {plan === 'pro' ? 'Popular' : plan === 'advanced' ? 'Best' : 'Starter'}
+                              </div>
                             </div>
-                            <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-                              plan === 'basic' ? 'bg-blue-500/20 text-blue-400' :
-                              plan === 'advanced' ? 'bg-purple-500/20 text-purple-400' :
-                              'bg-red-500/20 text-red-400'
-                            }`}>
-                              {plan === 'pro' ? 'Most Popular' : plan === 'advanced' ? 'Recommended' : 'Starter'}
-                            </div>
+                            {applyFirstOrder ? (
+                              <div>
+                                <p className="text-xs text-gray-400 line-through">{details.price}</p>
+                                <p className="text-xl md:text-2xl lg:text-3xl font-bold text-red-400">
+                                  {formatPrice(Math.round(parsePrice(details.price) * 0.6))}
+                                </p>
+                              </div>
+                            ) : (
+                              <p className="text-xl md:text-2xl lg:text-3xl font-bold text-red-400">{details.price}</p>
+                            )}
                           </div>
                           
-                          {/* First order coupon note */}
-                          <div className="mb-3 text-[11px] md:text-sm text-green-300">
-                            Use code <span className="font-mono">FIRST40</span> for <span className="font-semibold">40% OFF</span> on your first order.
+                          {/* Diwali coupon note */}
+                          <div className="mb-3 text-[11px] md:text-sm bg-gradient-to-r from-orange-400/20 to-yellow-400/20 border border-orange-500/30 rounded-lg px-2 py-1.5">
+                            <span className="text-orange-300">🪔 Diwali Offer:</span> Use code <span className="font-mono text-yellow-300 font-bold">FIRST40</span> for <span className="font-semibold text-orange-300">40% OFF</span>! ✨
                           </div>
 
-                          <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6">
+                          <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6 flex-grow">
                             {details.features.map((feature, featureIndex) => (
                               <li key={featureIndex} className="flex items-center space-x-2 text-[11px] md:text-sm text-gray-300">
                                 <Check className="h-3.5 w-3.5 md:h-4 md:w-4 text-green-400 flex-shrink-0" />
@@ -266,8 +294,8 @@ const Services: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Need a Custom Solution?
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-300 via-yellow-200 to-orange-300 bg-clip-text text-transparent">
+              🎊 Need a Custom Solution? 🎊
             </h2>
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
               Every project is unique. Let's discuss your specific requirements and create a tailored solution for your business.

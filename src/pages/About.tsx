@@ -13,12 +13,12 @@ import profil5 from "../saman/harshit.jpg";
 import profil6 from "../saman/vishal chaurasia.jpg";
 import profil7 from "../saman/Manish Kumar.jpg";
 
+
 const team = [
   { name: 'Aaryan Kumar', role: 'Founder & CTO  ',skill:"(Lead Web Developer)", photo: profil1 },
   { name: 'Utsav Rana', role: 'Co-founder & CTO',skill:"(Senior Mobile Developer)", photo: profil2 },
   { name: 'Sourav Jangid', role: 'Lead Software Engineer & CIO', photo: profil4 },
   { name: 'Harshit Sharma', role: 'Senior Frontend Developer', photo: profil5},
-  { name: 'Akshay Pundir ', role: 'Design Lead', photo: profil3 },
   { name: 'vishal chaurasia', role: 'Digital Marketing Lead', photo: profil6},
   { name: 'Manish Kuma', role: 'Cyber Security Expert', photo: profil7},
   

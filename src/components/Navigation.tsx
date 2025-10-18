@@ -26,7 +26,7 @@ const Navigation: React.FC = () => {
 
   return (
     <motion.nav
-      className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-red-900/30"
+      className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-lg"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}

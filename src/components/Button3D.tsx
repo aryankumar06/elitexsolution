@@ -25,9 +25,9 @@ const iconSizeClasses: Record<NonNullable<Button3DProps['size']>, string> = {
 };
 
 const baseVariantClasses = {
-  primary: 'text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800',
-  secondary: 'text-white bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700',
-  outline: 'text-gray-200 border border-white/15 hover:border-red-500/70 bg-white/5 backdrop-blur',
+  primary: 'text-white bg-gradient-to-br from-red-500 via-red-600 to-red-700 hover:from-red-600 hover:via-red-700 hover:to-red-800 shadow-glow-sm hover:shadow-glow-md',
+  secondary: 'text-white bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 hover:from-gray-500 hover:via-gray-600 hover:to-gray-700',
+  outline: 'text-gray-200 border-2 border-white/20 hover:border-red-500/80 bg-white/5 backdrop-blur-md hover:bg-white/10',
 } as const;
 
 const Button3D: React.FC<Button3DProps> = ({ as = 'button', href, className = '', size = 'sm', variant = 'primary', iconOnly = false, children, ...rest }) => {
@@ -47,10 +47,11 @@ const Button3D: React.FC<Button3DProps> = ({ as = 'button', href, className = ''
       className={clsx(
         'relative inline-flex items-center justify-center gap-2 select-none font-semibold',
         iconOnly ? iconSizeClasses[size] : sizeClasses[size],
-        iconOnly ? 'rounded-full' : 'rounded-lg',
+        iconOnly ? 'rounded-full' : 'rounded-xl',
         computedVariant,
-        'shadow-[0_6px_0_0_rgba(0,0,0,0.35)] active:shadow-[0_2px_0_0_rgba(0,0,0,0.35)]',
-        'transition-all duration-300',
+        'shadow-[0_8px_0_0_rgba(0,0,0,0.4)] active:shadow-[0_2px_0_0_rgba(0,0,0,0.4)]',
+        'transition-all duration-300 ease-out',
+        'hover:brightness-110',
         isDisabled && 'opacity-60 cursor-not-allowed pointer-events-none',
         className
       )}
