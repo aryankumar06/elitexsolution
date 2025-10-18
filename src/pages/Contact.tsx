@@ -38,8 +38,8 @@ const Contact: React.FC = () => {
   // Auto-apply discount from URL param
   useEffect(() => {
     const discount = (searchParams.get('discount') || '').toUpperCase();
-    if (discount === 'FIRST40') {
-      setCoupon('FIRST40');
+    if (discount === 'DIWALI40') {
+      setCoupon('DIWALI40');
       setCouponApplied(true);
       setCouponError('');
     }
@@ -50,6 +50,7 @@ const Contact: React.FC = () => {
     'Android Development',
     'UI/UX Design',
     'Game Development',
+    'App Testing & Store Deployment',
     'Custom Solution'
   ];
 
@@ -94,12 +95,12 @@ const Contact: React.FC = () => {
 
   const handleApplyCoupon = () => {
     const code = coupon.trim().toUpperCase();
-    if (code === 'FIRST40') {
+    if (code === 'DIWALI40') {
       setCouponApplied(true);
       setCouponError('');
     } else {
       setCouponApplied(false);
-      setCouponError('Invalid code. Use FIRST40 for 40% off your first order.');
+      setCouponError('Invalid code. Use DIWALI40 for 40% off your Diwali order.');
     }
   };
 
@@ -261,7 +262,7 @@ const Contact: React.FC = () => {
                       {/* Diwali Special Coupon */}
                       <div className="rounded-xl border-2 border-orange-500/40 bg-gradient-to-r from-orange-500/20 via-yellow-500/20 to-red-500/20 p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 shadow-lg shadow-orange-500/20">
                         <div className="text-orange-300 text-sm md:text-base">
-                          <span className="text-2xl">🪔</span> <span className="font-bold text-yellow-300">Diwali Special: 40% OFF</span> on your first order with code <span className="font-mono text-yellow-300 font-bold">FIRST40</span>! ✨
+                          <span className="text-2xl">🪔</span> <span className="font-bold text-yellow-300">Diwali Special: 40% OFF</span> on your first order with code <span className="font-mono text-yellow-300 font-bold">DIWALI40</span>! ✨
                           {couponApplied && <span className="ml-2 text-green-400 font-semibold">✔ Applied!</span>}
                         </div>
                         <div className="flex items-stretch gap-2">
@@ -269,7 +270,7 @@ const Contact: React.FC = () => {
                             type="text"
                             value={coupon}
                             onChange={(e) => setCoupon(e.target.value)}
-                            placeholder="Enter FIRST40"
+                            placeholder="Enter DIWALI40"
                             className="px-3 py-2 rounded-lg bg-white/5 border border-orange-400/30 text-white text-sm focus:outline-none focus:border-orange-400"
                           />
                           <button

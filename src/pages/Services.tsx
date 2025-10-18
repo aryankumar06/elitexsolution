@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Code, Smartphone, Palette, Gamepad2, Check, ArrowRight } from 'lucide-react';
+import { Code, Smartphone, Palette, Gamepad2, Check, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import LiquidGlow from '../components/LiquidGlow';
@@ -16,7 +16,7 @@ const Services: React.FC = () => {
 
   // initialize from URL or localStorage
   useEffect(() => {
-    const fromUrl = (searchParams.get('discount') || '').toLowerCase() === 'first40';
+    const fromUrl = (searchParams.get('discount') || '').toLowerCase() === 'diwali40';
     const stored = localStorage.getItem('firstOrderPreview') === 'true';
     if (fromUrl || stored) {
       setApplyFirstOrder(true);
@@ -28,7 +28,7 @@ const Services: React.FC = () => {
     localStorage.setItem('firstOrderPreview', String(applyFirstOrder));
     const current = new URLSearchParams(searchParams);
     if (applyFirstOrder) {
-      current.set('discount', 'first40');
+      current.set('discount', 'diwali40');
     } else {
       current.delete('discount');
     }
@@ -117,6 +117,24 @@ const Services: React.FC = () => {
         basic: { price: '$1500', features: ['Simple 2D Game', '5 Levels', 'Basic Mechanics', '3 Months Support'] },
         advanced: { price: '$2500', features: ['Advanced 2D/3D Game', '15 Levels', 'Complex Mechanics', 'Multiplayer', '6 Months Support'] },
         pro: { price: '$4000', features: ['Premium Game', 'Unlimited Content', 'Advanced Features', 'Ad Mob', '12 Months Support'] }
+      }
+    },
+    {
+      icon: <CheckCircle className="h-12 w-12" />,
+      title: 'App Testing & Store Deployment',
+      description: 'Comprehensive testing and deployment services for all major app stores.',
+      features: [
+        'Quality Assurance Testing',
+        'Bug Fixing & Optimization',
+        'Play Store Deployment',
+        'App Store Deployment',
+        'Store Listing Optimization',
+        'Post-Launch Support'
+      ],
+      pricing: {
+        basic: { price: '$150', features: ['Basic Testing', 'Single Store Deploy', 'Bug Report', '1 Month Support'] },
+        advanced: { price: '$300', features: ['Full Testing Suite', 'Multi-Store Deploy', 'ASO Optimization', '3 Months Support'] },
+        pro: { price: '$500', features: ['Complete QA', 'All Stores Deploy', 'Premium ASO', 'Ongoing Maintenance', '6 Months Support'] }
       }
     }
   ];
@@ -256,7 +274,7 @@ const Services: React.FC = () => {
                           
                           {/* Diwali coupon note */}
                           <div className="mb-3 text-[11px] md:text-sm bg-gradient-to-r from-orange-400/20 to-yellow-400/20 border border-orange-500/30 rounded-lg px-2 py-1.5">
-                            <span className="text-orange-300">🪔 Diwali Offer:</span> Use code <span className="font-mono text-yellow-300 font-bold">FIRST40</span> for <span className="font-semibold text-orange-300">40% OFF</span>! ✨
+                            <span className="text-orange-300">🪔 Diwali Offer:</span> Use code <span className="font-mono text-yellow-300 font-bold">DIWALI40</span> for <span className="font-semibold text-orange-300">40% OFF</span>! ✨
                           </div>
 
                           <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6 flex-grow">

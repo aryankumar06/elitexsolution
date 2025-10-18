@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Smartphone, Palette, Gamepad2, Star, Award, Users, Zap } from 'lucide-react';
+import { ArrowRight, Code, Smartphone, Palette, Gamepad2, Star, Award, Users, Zap, CheckCircle } from 'lucide-react';
 import GlowingLogo from '../components/GlowingLogo';
 import ParticleBackground from '../components/ParticleBackground';
 import GlassCard from '../components/GlassCard';
@@ -35,6 +35,11 @@ const LandingPage: React.FC = () => {
       icon: <Gamepad2 className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'Game Development',
       description: 'Engaging games for mobile and web platforms using Unity, Unreal Engine, and custom frameworks.'
+    },
+    {
+      icon: <CheckCircle className="h-6 w-6 md:h-8 md:w-8" />,
+      title: 'App Testing & Store Deployment',
+      description: 'Comprehensive QA testing and deployment to Play Store, App Store, and all major platforms.'
     }
   ];
 
@@ -220,7 +225,7 @@ const LandingPage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
             {services.map((service, index) => (
                 <GlassCard key={index} delay={index * 0.1}>
                   <div className="p-6 sm:p-6 md:p-8 h-full">
