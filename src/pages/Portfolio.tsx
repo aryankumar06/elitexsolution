@@ -9,17 +9,20 @@ import Button3D from '../components/Button3D';
 import Footer from '../components/Footer';
 import port3 from "../saman/port3.png";
 import port2 from "../saman/port2.png";
-
+import port4 from "../saman/port4.png";
+import port5 from "../saman/port5.png";
+import port6 from "../saman/port6.png";
+import port7 from "../saman/port7.png";
 
 const Portfolio: React.FC = () => {
   const projects = [
     {
-      title: 'Native Company Profile App',
+      title: 'Devkamal Engineers Profile App',
       category: 'App Development',
       icon: <Smartphone className="h-6 w-6" />,
      
       description: "In this project, I will showcase all the products of the company. I will create multiple pages, including a profile page, location page, and customer support page. Additionally, I will implement an offline chatbot that allows users to type their queries and receive instant replies.",
-       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
+       image: port4,
       technologies: ['Flutter', 'Ui design', 'Tailwind CSS'],
       liveUrl: 'perosnal project',
     
@@ -46,33 +49,33 @@ const Portfolio: React.FC = () => {
      
     },
     {
-      title: 'Space Adventure Game',
+      title: 'Naruto Ninja adventure',
       category: 'Game Development',
       icon: <Gamepad2 className="h-6 w-6" />,
-      description: '2D space adventure game with multiple levels, power-ups, and engaging gameplay mechanics. Built with Unity and C#.',
-      image: 'https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Unity', 'C#', 'Photoshop', 'Game Analytics'],
-      liveUrl: '#',
+      description: "a 2D pixel-style side-scrolling game based on the Naruto universe. Players can control ninja characters like Kakaxi, each with their own unique jutsu attacks, wall-running abilities, and special ultimate powers. The levels should feature iconic locations such as the Hidden Leaf Village, filled with rival ninjas.",
+      image: port5,
+      technologies: ['Phaser', 'C#', "WebGL shader" , 'Game Analytics'],
+      liveUrl: 'https://mhkc2tnl.gambo.games/',
       githubUrl: '#'
     },
     {
-      title: 'Real Estate Platform',
+      title: 'Idaho Clothing- E Commerce',
       category: 'Web Development',
       icon: <Code className="h-6 w-6" />,
-      description: 'Modern real estate platform with property listings, virtual tours, and agent management system. Features advanced search and filtering.',
-      image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS', 'Mapbox'],
-      liveUrl: '#',
+      description: 'Idaho Clothing is a Jaipur-based premium ethnic and western wear fashion brand specializing in contemporary womens clothing. Operating as an online D2C (Direct-to-Consumer) e-commerce store, Idaho-O has established itself as a trendsetting fashion destination for women seeking elegance, comfort, and quality craftsmanship.',
+      image:port7,
+      technologies: ['PHP ', 'WordPress','WooCommerce backend','Shopify',],
+      liveUrl: 'https://idaho-o.com/',
       githubUrl: '#'
     },
     {
-      title: 'Food Delivery App',
+      title: 'ASAP- Social Media Influencer app ',
       category: 'Android Development',
       icon: <Smartphone className="h-6 w-6" />,
-      description: 'Complete food delivery solution with customer app, restaurant dashboard, and delivery tracking. Real-time order updates and payment integration.',
-      image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React Native', 'Node.js', 'Socket.io', 'Google Maps API'],
-      liveUrl: '#',
+      description: 'ASAP – Connect with Top Brands Instantly ASAP makes influencer collaborations effortless. Whether you’re a creator, influencer, or brand ambassador — you can discover and connect with 1,000+ top brands in just a few taps.',
+      image: port6,
+      technologies: ['Kotlin', 'supabase', 'Socket.io', 'Email.js'],
+      liveUrl: 'https://apps.apple.com/in/app/asap-request-pr-boxes-more/id6738424129',
       githubUrl: '#'
     }
   ];

@@ -44,7 +44,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
       </div>
       
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10" style={{ transform: 'translateZ(1px)', backfaceVisibility: 'hidden' }}>
         {children}
       </div>
     </motion.div>

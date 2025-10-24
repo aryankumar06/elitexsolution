@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Code, Smartphone, Palette, Gamepad2, Check, ArrowRight, CheckCircle } from 'lucide-react';
@@ -142,12 +142,12 @@ const Services: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Diwali Decorative Elements */}
-      <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30">🪔</div>
-      <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30 animation-delay-300">✨</div>
-      <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30 animation-delay-500">🎆</div>
-      <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30 animation-delay-700">🪔</div>
-      <div className="fixed top-1/2 left-5 text-2xl animate-pulse opacity-20">🎉</div>
-      <div className="fixed top-1/3 right-10 text-2xl animate-pulse opacity-20 animation-delay-400">🎊</div>
+      <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0s'}}>🪔</div>
+      <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.3s'}}>✨</div>
+      <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.5s'}}>🎆</div>
+      <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.7s'}}>🪔</div>
+      <div className="fixed top-1/2 left-5 text-2xl animate-pulse opacity-20 z-0 pointer-events-none" style={{animationDelay: '0.2s'}}>🎉</div>
+      <div className="fixed top-1/3 right-10 text-2xl animate-pulse opacity-20 z-0 pointer-events-none" style={{animationDelay: '0.4s'}}>🎊</div>
       
       <ParticleBackground />
       <Navigation />
@@ -183,26 +183,26 @@ const Services: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <div className="inline-flex items-center gap-3 rounded-2xl border-2 border-orange-500/40 bg-gradient-to-r from-orange-500/20 via-yellow-500/20 to-red-500/20 px-6 py-3 shadow-lg shadow-orange-500/20 backdrop-blur-sm">
-                <span className="text-2xl animate-pulse">🪔</span>
+              <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl border-2 border-orange-500/40 bg-gradient-to-r from-orange-500/20 via-yellow-500/20 to-red-500/20 px-3 py-2 sm:px-6 sm:py-3 shadow-lg shadow-orange-500/20 backdrop-blur-sm max-w-full">
+                <span className="text-xl sm:text-2xl animate-pulse">🪔</span>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                  <span className="text-orange-300 text-sm md:text-base font-semibold">
-                    ✨ Diwali Special: <span className="text-yellow-300 text-lg md:text-xl font-bold">40% OFF</span> on First Order! 🎉
+                  <span className="text-orange-300 text-xs sm:text-sm md:text-base font-semibold text-center sm:text-left">
+                    ✨ Diwali Special: <span className="text-yellow-300 text-base sm:text-lg md:text-xl font-bold">40% OFF</span> on First Order! 🎉
                   </span>
                   <button
                     type="button"
                     onClick={() => setApplyFirstOrder(v => !v)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 ${applyFirstOrder ? 'bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-orange-500/50' : 'bg-gray-600'}`}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 flex-shrink-0 ${applyFirstOrder ? 'bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-orange-500/50' : 'bg-gray-600'}`}
                     aria-label={applyFirstOrder ? 'Disable Diwali discount preview' : 'Enable Diwali discount preview'}
                   >
                     <span className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow-md ${applyFirstOrder ? 'translate-x-5' : 'translate-x-1'}`} />
                   </button>
                 </div>
-                <span className="text-2xl animate-pulse">🪔</span>
+                <span className="text-xl sm:text-2xl animate-pulse">🪔</span>
               </div>
               {/* Sparkle effects */}
               <div className="absolute -top-1 -left-1 text-yellow-400 text-xs animate-pulse">✨</div>
-              <div className="absolute -bottom-1 -right-1 text-orange-400 text-xs animate-pulse delay-75">✨</div>
+              <div className="absolute -bottom-1 -right-1 text-orange-400 text-xs animate-pulse" style={{animationDelay: '0.15s'}}>✨</div>
             </motion.div>
           </motion.div>
 
@@ -243,7 +243,7 @@ const Services: React.FC = () => {
                   </div>
 
                   {/* Pricing Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 lg:gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 lg:gap-6">
                     {Object.entries(service.pricing).map(([plan, details]) => (
                       <GlassCard key={plan}>
                         <div className="p-4 md:p-5 lg:p-6 flex flex-col h-full">

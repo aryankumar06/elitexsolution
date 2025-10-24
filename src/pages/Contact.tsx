@@ -108,10 +108,10 @@ const Contact: React.FC = () => {
     return (
       <div className="min-h-screen bg-black text-red flex items-center justify-center relative overflow-hidden">
         {/* Diwali Decorative Elements */}
-        <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30">🪔</div>
-        <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30">✨</div>
-        <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30">🎆</div>
-        <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30">🪔</div>
+        <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30" style={{animationDelay: '0s'}}>🪔</div>
+        <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30" style={{animationDelay: '0.3s'}}>✨</div>
+        <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30" style={{animationDelay: '0.5s'}}>🎆</div>
+        <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30" style={{animationDelay: '0.7s'}}>🪔</div>
         
         <ParticleBackground />
         <Navigation />
@@ -147,12 +147,12 @@ const Contact: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Diwali Decorative Elements */}
-      <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30">🪔</div>
-      <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30 animation-delay-300">✨</div>
-      <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30 animation-delay-500">🎆</div>
-      <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30 animation-delay-700">🪔</div>
-      <div className="fixed top-1/2 left-5 text-2xl animate-pulse opacity-20">🎉</div>
-      <div className="fixed top-1/3 right-10 text-2xl animate-pulse opacity-20 animation-delay-400">🎊</div>
+      <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0s'}}>🪔</div>
+      <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.3s'}}>✨</div>
+      <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.5s'}}>🎆</div>
+      <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.7s'}}>🪔</div>
+      <div className="fixed top-1/2 left-5 text-2xl animate-pulse opacity-20 z-0 pointer-events-none" style={{animationDelay: '0.2s'}}>🎉</div>
+      <div className="fixed top-1/3 right-10 text-2xl animate-pulse opacity-20 z-0 pointer-events-none" style={{animationDelay: '0.4s'}}>🎊</div>
       
       <ParticleBackground />
       <Navigation />

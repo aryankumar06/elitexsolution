@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import GlowingLogo from './GlowingLogo';
 import BrandLogo from './BrandLogo';
 import Button3D from './Button3D';
 
@@ -31,19 +30,19 @@ const Navigation: React.FC = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-14 md:h-16">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-14 sm:h-16 md:h-18">
           <Link to="/" aria-label="EliteX Home">
             <BrandLogo />
           </Link>
 
           {/* Animated tabs (no glass) */}
-          <div className="relative flex items-center space-x-2 sm:space-x-4 overflow-x-auto md:overflow-visible whitespace-nowrap -mx-2 px-2 overscroll-x-contain">
+          <div className="relative flex items-center space-x-1 sm:space-x-2 md:space-x-4 overflow-x-auto md:overflow-visible whitespace-nowrap -mx-1 sm:-mx-2 px-1 sm:px-2 overscroll-x-contain scrollbar-hide">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative shrink-0 px-3 py-2 md:px-4 md:py-2 text-xs md:text-sm font-medium transition-transform ${
+                className={`relative shrink-0 px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2 text-[10px] sm:text-xs md:text-sm font-medium transition-transform ${
                   location.pathname === item.path ? 'text-white' : 'text-gray-300 hover:text-white'
                 }`}
                 aria-current={location.pathname === item.path ? 'page' : undefined}

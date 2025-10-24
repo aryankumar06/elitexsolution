@@ -14,6 +14,7 @@ import Footer from '../components/Footer';
 import ResponseGuarantee from '../components/ResponseGuarantee';
 import DevelopmentFlow from '../components/DevelopmentFlow';
 
+
 const LandingPage: React.FC = () => {
   const services = [
     {
@@ -225,7 +226,7 @@ const LandingPage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
             {services.map((service, index) => (
                 <GlassCard key={index} delay={index * 0.1}>
                   <div className="p-6 sm:p-6 md:p-8 h-full">
