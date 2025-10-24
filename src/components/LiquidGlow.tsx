@@ -23,7 +23,7 @@ const LiquidGlow: React.FC<LiquidGlowProps> = ({ color = '#ef4444', size = 160, 
       aria-hidden
       initial={{ opacity: 0.0, scale: 0.9 }}
       animate={{ opacity: active ? 0.5 : 0.0, scale: active ? [1, 1.07, 1] : 0.9 }}
-      transition={{ duration: 2.2, repeat: active ? Infinity : 0, ease: 'easeInOut' }}
+      transition={{ duration: 2.5, repeat: active ? Infinity : 0, ease: 'easeInOut', repeatType: 'loop' }}
       className={`absolute inset-0 -z-10 rounded-[24px] blur-2xl ${className}`}
       style={{
         background: `radial-gradient(closest-side, ${rgba(color, 0.45)}, ${rgba(color, 0.22)}, transparent)`,
@@ -34,6 +34,8 @@ const LiquidGlow: React.FC<LiquidGlowProps> = ({ color = '#ef4444', size = 160, 
         top: '50%',
         transform: 'translate(-50%, -50%)',
         pointerEvents: 'none',
+        willChange: 'opacity, transform',
+        backfaceVisibility: 'hidden',
       }}
     />
   );

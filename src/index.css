@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  /* Global performance optimizations */
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-optical-sizing: auto;
@@ -20,6 +25,13 @@
 
   * {
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* GPU acceleration for transforms and opacity */
+  [class*="motion-"],
+  [class*="animate-"] {
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 }
 

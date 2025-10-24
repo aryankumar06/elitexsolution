@@ -25,11 +25,11 @@ const Tilt3D: React.FC<Tilt3DProps> = ({
 
   const rotX = useSpring(
     useTransform(mouseY, (v) => v),
-    { stiffness: 200, damping: 20 }
+    { stiffness: 150, damping: 25, restDelta: 0.001 }
   );
   const rotY = useSpring(
     useTransform(mouseX, (v) => v),
-    { stiffness: 200, damping: 20 }
+    { stiffness: 150, damping: 25, restDelta: 0.001 }
   );
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -67,13 +67,20 @@ const Tilt3D: React.FC<Tilt3DProps> = ({
         transformStyle: 'preserve-3d',
         rotateX: rotX,
         rotateY: rotY,
+        willChange: 'transform',
+        backfaceVisibility: 'hidden',
       }}
       animate={{ scale: isHover ? hoverScale : 1 }}
-      transition={{ type: 'spring', stiffness: 250, damping: 20 }}
-      className={clsx('relative', className)}
+      transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+      className={clsx('relative overflow-hidden', className)}
     >
       {/* content layer */}
-      <div style={{ transform: 'translateZ(0.01px)' }}>{children}</div>
+      <div 
+        className={className}
+        style={{ transform: 'translateZ(0.01px)', backfaceVisibility: 'hidden' }}
+      >
+        {children}
+      </div>
 
       {glare && (
         <motion.div

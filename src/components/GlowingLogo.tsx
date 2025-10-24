@@ -16,57 +16,41 @@ const GlowingLogo: React.FC<GlowingLogoProps> = ({ className = '', size = 'md' }
 
   return (
     <motion.div
-      className={`${sizeClasses[size]} font-bold ${className}`}
+      className={`${sizeClasses[size]} font-bold ${className} relative`}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       style={{ willChange: 'transform, opacity' }}
     >
+      {/* Animated glow layers - GPU accelerated */}
       <motion.span
-        className="bg-gradient-to-r from-red-500 via-pink-500 to-red-600 bg-clip-text text-transparent"
-        animate={{
-          textShadow: [
-            '0 0 10px #ff004080',
-            '0 0 20px #ff004060',
-            '0 0 30px #ff004040',
-            '0 0 20px #ff004060',
-            '0 0 10px #ff004080'
-          ]
+        className="absolute inset-0 blur-xl pointer-events-none"
+        animate={{ opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        style={{ 
+          background: 'radial-gradient(ellipse at center, #ff004060 0%, transparent 70%)',
+          willChange: 'opacity',
         }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
+        aria-hidden
+      />
+      <motion.span
+        className="absolute inset-0 blur-xl pointer-events-none"
+        animate={{ opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        style={{ 
+          background: 'radial-gradient(ellipse at 70% center, #00d9ff50 0%, transparent 70%)',
+          willChange: 'opacity',
         }}
-        style={{
-          filter: 'drop-shadow(0 0 10px #ff0040)',
-        }}
-      >
+        aria-hidden
+      />
+      
+      {/* Text content */}
+      <span className="relative bg-gradient-to-r from-red-500 via-pink-500 to-red-600 bg-clip-text text-transparent">
         elite<i>X</i>
-      </motion.span>
-      <motion.span
-        className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
-        animate={{
-          textShadow: [
-            '0 0 10px #00d9ff80',
-            '0 0 20px #00d9ff60',
-            '0 0 30px #00d9ff40',
-            '0 0 20px #00d9ff60',
-            '0 0 10px #00d9ff80'
-          ]
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.5
-        }}
-        style={{
-          filter: 'drop-shadow(0 0 10px #00d9ff)',
-        }}
-      >
+      </span>
+      <span className="relative bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
         solutions
-      </motion.span>
+      </span>
     </motion.div>
   );
 };

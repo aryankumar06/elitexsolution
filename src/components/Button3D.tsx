@@ -25,9 +25,9 @@ const iconSizeClasses: Record<NonNullable<Button3DProps['size']>, string> = {
 };
 
 const baseVariantClasses = {
-  primary: 'text-white bg-gradient-to-br from-red-500 via-red-600 to-red-700 hover:from-red-600 hover:via-red-700 hover:to-red-800 shadow-glow-sm hover:shadow-glow-md',
-  secondary: 'text-white bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 hover:from-gray-500 hover:via-gray-600 hover:to-gray-700',
-  outline: 'text-gray-200 border-2 border-white/20 hover:border-red-500/80 bg-white/5 backdrop-blur-md hover:bg-white/10',
+  primary: 'text-white bg-gradient-to-br from-red-500 via-red-600 to-red-700 hover:from-red-600 hover:via-red-700 hover:to-red-800 shadow-[0_4px_14px_0_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_0_rgba(239,68,68,0.5)]',
+  secondary: 'text-white bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 hover:from-gray-500 hover:via-gray-600 hover:to-gray-700 shadow-[0_4px_14px_0_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_0_rgba(0,0,0,0.4)]',
+  outline: 'text-gray-200 border-2 border-white/20 hover:border-red-500/80 bg-white/5 backdrop-blur-md hover:bg-white/10 shadow-[0_2px_10px_0_rgba(255,255,255,0.1)]',
 } as const;
 
 const Button3D: React.FC<Button3DProps> = ({ as = 'button', href, className = '', size = 'sm', variant = 'primary', iconOnly = false, children, ...rest }) => {
@@ -44,23 +44,33 @@ const Button3D: React.FC<Button3DProps> = ({ as = 'button', href, className = ''
   const base = (
     <motion.div
       whileTap={{ scale: isDisabled ? 1 : 0.98, y: isDisabled ? 0 : 1 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
       className={clsx(
-        'relative inline-flex items-center justify-center gap-2 select-none font-semibold',
+        'relative inline-flex items-center justify-center gap-2 select-none font-semibold overflow-hidden',
         iconOnly ? iconSizeClasses[size] : sizeClasses[size],
         iconOnly ? 'rounded-full' : 'rounded-xl',
         computedVariant,
-        'shadow-[0_8px_0_0_rgba(0,0,0,0.4)] active:shadow-[0_2px_0_0_rgba(0,0,0,0.4)]',
-        'transition-all duration-300 ease-out',
+        'transition-all duration-200 ease-out',
         'hover:brightness-110',
+        'ring-0 outline-none',
         isDisabled && 'opacity-60 cursor-not-allowed pointer-events-none',
         className
       )}
+      style={{ 
+        willChange: 'transform', 
+        backfaceVisibility: 'hidden',
+        WebkitFontSmoothing: 'antialiased',
+        MozOsxFontSmoothing: 'grayscale',
+      }}
     >
       <span className="relative z-10 flex items-center gap-2">{children}</span>
       {variant !== 'outline' && (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-inherit"
+          className={clsx(
+            'pointer-events-none absolute inset-0',
+            iconOnly ? 'rounded-full' : 'rounded-xl'
+          )}
           style={{
             background:
               'linear-gradient(120deg, rgba(255,255,255,0.15), rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15))',
@@ -73,18 +83,30 @@ const Button3D: React.FC<Button3DProps> = ({ as = 'button', href, className = ''
     </motion.div>
   );
 
-  const content = <Tilt3D hoverScale={isDisabled ? 1 : 1.03}>{base}</Tilt3D>;
+  const content = (
+    <Tilt3D 
+      hoverScale={isDisabled ? 1 : 1.03}
+      className={iconOnly ? 'rounded-full' : 'rounded-xl'}
+    >
+      {base}
+    </Tilt3D>
+  );
 
   if (as === 'a' && href) {
     return (
-      <a href={href} className="inline-block no-underline">
+      <a href={href} className="inline-block no-underline" style={{ borderRadius: 'inherit' }}>
         {content}
       </a>
     );
   }
 
   return (
-    <button type="button" {...rest} className="bg-transparent border-0 p-0">
+    <button 
+      type="button" 
+      {...rest} 
+      className="bg-transparent border-0 p-0 outline-none focus:outline-none"
+      style={{ borderRadius: 'inherit' }}
+    >
       {content}
     </button>
   );
