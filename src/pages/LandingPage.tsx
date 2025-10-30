@@ -8,7 +8,6 @@ import GlassCard from '../components/GlassCard';
 import Navigation from '../components/Navigation';
 import GradientOrbs from '../components/GradientOrbs';
 import LiquidGlow from '../components/LiquidGlow';
-import ParallaxLayer from '../components/ParallaxLayer';
 import Button3D from '../components/Button3D';
 import Footer from '../components/Footer';
 import ResponseGuarantee from '../components/ResponseGuarantee';
@@ -91,13 +90,21 @@ const LandingPage: React.FC = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative">
-        <ParallaxLayer speed={0.1} className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
-        </ParallaxLayer>
-        <ParallaxLayer speed={-0.05} className="pointer-events-none">
-          <GradientOrbs />
-        </ParallaxLayer>
+      <section className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-hidden">
+        <GradientOrbs className="opacity-40" />
+        
+        {/* 3D Floating Spheres - Optimized */}
+        <motion.div
+          className="absolute top-20 left-10 w-16 h-16 rounded-full bg-gradient-to-br from-red-500/20 to-purple-500/20 border border-red-500/30 hidden lg:block"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+        />
+        
+        <motion.div
+          className="absolute top-40 right-20 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 hidden lg:block"
+          animate={{ y: [0, 30, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        />
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
@@ -159,29 +166,10 @@ const LandingPage: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Floating 3D Elements */}
-        <div className="absolute top-1/4 left-10 opacity-30 hidden md:block">
-          <motion.div
-            animate={{ rotate: 360, y: [0, -20, 0] }}
-            transition={{ rotate: { duration: 20, repeat: Infinity }, y: { duration: 4, repeat: Infinity } }}
-            className="w-20 h-20 border-2 border-red-500 rounded-lg"
-          />
-        </div>
-        
-        <div className="absolute bottom-1/4 right-10 opacity-30 hidden md:block">
-          <motion.div
-            animate={{ rotate: -360, y: [0, 20, 0] }}
-            transition={{ rotate: { duration: 15, repeat: Infinity }, y: { duration: 3, repeat: Infinity } }}
-            className="w-16 h-16 border-2 border-blue-500 rounded-full"
-          />
-        </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 relative">
-        <ParallaxLayer speed={0.06} className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/2 to-transparent opacity-[0.02]" />
-        </ParallaxLayer>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -204,8 +192,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-14 md:py-20 relative">
-        <GradientOrbs className="opacity-70" />
+      <section className="py-14 md:py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             className="relative text-center mb-16"
@@ -214,13 +201,21 @@ const LandingPage: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <LiquidGlow color="#a855f7" size={220} />
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent tracking-tight">
               Our{' '}
               <span className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
                 Services
               </span>
             </h2>
+            
+            {/* Subtle Prototype Message */}
+            <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+              <span className="text-xs md:text-sm text-gray-400">
+                Get your project prototype in just 1 hour after confirming your order
+              </span>
+              <span className="text-sm">🚀</span>
+            </div>
+            
             <p className="text-base md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Comprehensive tech solutions designed to elevate your business with cutting-edge technology and innovative approaches.
             </p>
@@ -253,11 +248,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-14 md:py-20 relative">
-        <ParallaxLayer speed={0.08} className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900/10 to-blue-900/10" />
-        </ParallaxLayer>
-        <GradientOrbs className="opacity-60" />
+      <section className="py-14 md:py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div
             className="relative text-center mb-16"
@@ -386,10 +377,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative">
-        <ParallaxLayer speed={0.1} className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-blue-900/20" />
-        </ParallaxLayer>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div
             className="text-center max-w-4xl mx-auto overflow-visible"
@@ -414,6 +402,86 @@ const LandingPage: React.FC = () => {
                 <ArrowRight className="h-5 w-5" />
               </Button3D>
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Collaboration Section */}
+      <section className="py-16 md:py-20 relative border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            {/* Minimal Header */}
+            <p className="text-xs md:text-sm text-gray-500 uppercase tracking-wider mb-8">
+              Collaboration Partners
+            </p>
+
+            {/* Clean Horizontal Layout */}
+            <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-12 mb-12">
+              {/* ElitexSolutions */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <span className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent">
+                  ElitexSolutions
+                </span>
+              </motion.div>
+
+              {/* Separator */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <span className="text-2xl md:text-3xl text-gray-600">×</span>
+              </motion.div>
+
+              {/* TechCipherX */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <span className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  TechCipherX
+                </span>
+              </motion.div>
+            </div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <button
+                onClick={() => {
+                  window.location.href = '/stripe-payment?amount=100&purpose=consultation';
+                }}
+                className="inline-block"
+              >
+                <Button3D size="sm">
+                  <span className="flex items-center gap-2">
+                    <span>Book 1:1 Consultation</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Button3D>
+              </button>
+              <p className="text-xs text-gray-500 mt-3">
+                ₹100 • Get prototype in 1 hour
+              </p>
+            </motion.div>
           </motion.div>
         </div>
       </section>

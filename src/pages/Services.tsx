@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Smartphone, Palette, Gamepad2, Check, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,40 +10,6 @@ import Button3D from '../components/Button3D';
 import Footer from '../components/Footer';
 
 const Services: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [applyFirstOrder, setApplyFirstOrder] = useState(false);
-
-  // initialize from URL or localStorage
-  useEffect(() => {
-    const fromUrl = (searchParams.get('discount') || '').toLowerCase() === 'diwali40';
-    const stored = localStorage.getItem('firstOrderPreview') === 'true';
-    if (fromUrl || stored) {
-      setApplyFirstOrder(true);
-    }
-  }, []);
-
-  // persist to storage and URL
-  useEffect(() => {
-    localStorage.setItem('firstOrderPreview', String(applyFirstOrder));
-    const current = new URLSearchParams(searchParams);
-    if (applyFirstOrder) {
-      current.set('discount', 'diwali40');
-    } else {
-      current.delete('discount');
-    }
-    setSearchParams(current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [applyFirstOrder]);
-
-  const parsePrice = (price: string): number => {
-    const digits = price.replace(/[^0-9]/g, '');
-    const value = Number(digits);
-    return isNaN(value) ? 0 : value;
-  };
-
-  const formatPrice = (value: number): string => {
-    return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
-  };
   const services = [
     {
       icon: <Code className="h-12 w-12" />,
@@ -141,13 +106,6 @@ const Services: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Diwali Decorative Elements */}
-      <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0s'}}>🪔</div>
-      <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.3s'}}>✨</div>
-      <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.5s'}}>🎆</div>
-      <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.7s'}}>🪔</div>
-      <div className="fixed top-1/2 left-5 text-2xl animate-pulse opacity-20 z-0 pointer-events-none" style={{animationDelay: '0.2s'}}>🎉</div>
-      <div className="fixed top-1/3 right-10 text-2xl animate-pulse opacity-20 z-0 pointer-events-none" style={{animationDelay: '0.4s'}}>🎊</div>
       
       <ParticleBackground />
       <Navigation />
@@ -162,48 +120,15 @@ const Services: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <LiquidGlow color="#a855f7" size={200} />
-            <div className="inline-block mb-2">
-              <span className="text-3xl md:text-4xl">🪔</span>
-            </div>
-            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-orange-300 via-yellow-200 to-orange-300 bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
               Our{' '}
-              <span className="bg-gradient-to-r from-orange-400 via-yellow-500 to-red-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
                 Services
               </span>
-              {' '}🎉
             </h1>
             <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
               Comprehensive tech solutions designed to transform your business with cutting-edge technology and innovative approaches.
             </p>
-
-            {/* Diwali Discount Toggle */}
-            <motion.div 
-              className="mt-8 relative"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-2xl border-2 border-orange-500/40 bg-gradient-to-r from-orange-500/20 via-yellow-500/20 to-red-500/20 px-3 py-2 sm:px-6 sm:py-3 shadow-lg shadow-orange-500/20 backdrop-blur-sm max-w-full">
-                <span className="text-xl sm:text-2xl animate-pulse">🪔</span>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                  <span className="text-orange-300 text-xs sm:text-sm md:text-base font-semibold text-center sm:text-left">
-                    ✨ Diwali Special: <span className="text-yellow-300 text-base sm:text-lg md:text-xl font-bold">40% OFF</span> on First Order! 🎉
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => setApplyFirstOrder(v => !v)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 flex-shrink-0 ${applyFirstOrder ? 'bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-orange-500/50' : 'bg-gray-600'}`}
-                    aria-label={applyFirstOrder ? 'Disable Diwali discount preview' : 'Enable Diwali discount preview'}
-                  >
-                    <span className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow-md ${applyFirstOrder ? 'translate-x-5' : 'translate-x-1'}`} />
-                  </button>
-                </div>
-                <span className="text-xl sm:text-2xl animate-pulse">🪔</span>
-              </div>
-              {/* Sparkle effects */}
-              <div className="absolute -top-1 -left-1 text-yellow-400 text-xs animate-pulse">✨</div>
-              <div className="absolute -bottom-1 -right-1 text-orange-400 text-xs animate-pulse" style={{animationDelay: '0.15s'}}>✨</div>
-            </motion.div>
           </motion.div>
 
           {/* Services */}
@@ -260,21 +185,7 @@ const Services: React.FC = () => {
                                 {plan === 'pro' ? 'Popular' : plan === 'advanced' ? 'Best' : 'Starter'}
                               </div>
                             </div>
-                            {applyFirstOrder ? (
-                              <div>
-                                <p className="text-xs text-gray-400 line-through">{details.price}</p>
-                                <p className="text-xl md:text-2xl lg:text-3xl font-bold text-red-400">
-                                  {formatPrice(Math.round(parsePrice(details.price) * 0.6))}
-                                </p>
-                              </div>
-                            ) : (
-                              <p className="text-xl md:text-2xl lg:text-3xl font-bold text-red-400">{details.price}</p>
-                            )}
-                          </div>
-                          
-                          {/* Diwali coupon note */}
-                          <div className="mb-3 text-[11px] md:text-sm bg-gradient-to-r from-orange-400/20 to-yellow-400/20 border border-orange-500/30 rounded-lg px-2 py-1.5">
-                            <span className="text-orange-300">🪔 Diwali Offer:</span> Use code <span className="font-mono text-yellow-300 font-bold">DIWALI40</span> for <span className="font-semibold text-orange-300">40% OFF</span>! ✨
+                            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-red-400">{details.price}</p>
                           </div>
 
                           <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6 flex-grow">
@@ -312,8 +223,11 @@ const Services: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-300 via-yellow-200 to-orange-300 bg-clip-text text-transparent">
-              🎊 Need a Custom Solution? 🎊
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-br from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+              Need a{' '}
+              <span className="bg-gradient-to-br from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
+                Custom Solution?
+              </span>
             </h2>
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
               Every project is unique. Let's discuss your specific requirements and create a tailored solution for your business.
