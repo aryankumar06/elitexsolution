@@ -199,7 +199,7 @@ const Contact: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="text-base md:text-lg font-semibold text-white">Email Us</h3>
-                        <p className="text-sm md:text-base text-gray-400">team@elitexsolutions.com</p>
+                        <p className="text-sm md:text-base text-gray-400">team@elitexsolutions.xyz</p>
                       </div>
                     </div>
                   </div>
