@@ -422,7 +422,7 @@ const LandingPage: React.FC = () => {
             </p>
 
             {/* Clean Horizontal Layout */}
-            <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-12 mb-12">
+            <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-12">
               {/* ElitexSolutions */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -430,9 +430,26 @@ const LandingPage: React.FC = () => {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <span className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent">
-                  ElitexSolutions
-                </span>
+                <motion.span 
+                  className="text-xl md:text-2xl lg:text-3xl font-bold inline-block"
+                  style={{
+                    background: 'linear-gradient(90deg, #f87171, #ef4444, #dc2626, #f87171, #fb923c, #f87171)',
+                    backgroundSize: '300% 100%',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: 'linear',
+                  }}
+                >
+                  Elite<i>X</i> Solutions
+                </motion.span>
               </motion.div>
 
               {/* Separator */}
@@ -442,7 +459,27 @@ const LandingPage: React.FC = () => {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <span className="text-2xl md:text-3xl text-gray-600">×</span>
+                <motion.span 
+                  className="text-2xl md:text-3xl inline-block"
+                  style={{
+                    background: 'linear-gradient(90deg, #9ca3af, #d1d5db, #9ca3af)',
+                    backgroundSize: '200% 100%',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
+                  ×
+                </motion.span>
               </motion.div>
 
               {/* TechCipherX */}
@@ -452,36 +489,28 @@ const LandingPage: React.FC = () => {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <span className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                <motion.span 
+                  className="text-xl md:text-2xl lg:text-3xl font-bold inline-block"
+                  style={{
+                    background: 'linear-gradient(90deg, #60a5fa, #8b5cf6, #a855f7, #60a5fa, #22d3ee, #60a5fa)',
+                    backgroundSize: '300% 100%',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                  animate={{
+                    backgroundPosition: ['100% 50%', '0% 50%', '100% 50%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: 'linear',
+                  }}
+                >
                   TechCipherX
-                </span>
+                </motion.span>
               </motion.div>
             </div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <button
-                onClick={() => {
-                  window.location.href = '/stripe-payment?amount=100&purpose=consultation';
-                }}
-                className="inline-block"
-              >
-                <Button3D size="sm">
-                  <span className="flex items-center gap-2">
-                    <span>Book 1:1 Consultation</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
-                </Button3D>
-              </button>
-              <p className="text-xs text-gray-500 mt-3">
-                ₹100 • Get prototype in 1 hour
-              </p>
-            </motion.div>
           </motion.div>
         </div>
       </section>

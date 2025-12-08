@@ -44,13 +44,49 @@ const GlowingLogo: React.FC<GlowingLogoProps> = ({ className = '', size = 'md' }
         aria-hidden
       />
       
-      {/* Text content */}
-      <span className="relative bg-gradient-to-r from-red-500 via-pink-500 to-red-600 bg-clip-text text-transparent">
-        elite<i>X</i>
-      </span>
-      <span className="relative bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-        solutions
-      </span>
+      {/* Animated gradient text - eliteX */}
+      <motion.span 
+        className="relative inline-block"
+        style={{
+          background: 'linear-gradient(90deg, #ff4444, #ff0080, #ff4444, #ff6b35, #ff4444)',
+          backgroundSize: '300% 100%',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+          color: 'transparent',
+        }}
+        animate={{
+          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      >
+        elite<i className="italic font-extrabold">X</i>
+      </motion.span>
+      
+      {/* Animated gradient text - Solutions */}
+      <motion.span 
+        className="relative inline-block"
+        style={{
+          background: 'linear-gradient(90deg, #00d4ff, #7c3aed, #00d4ff, #06b6d4, #00d4ff)',
+          backgroundSize: '300% 100%',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+          color: 'transparent',
+        }}
+        animate={{
+          backgroundPosition: ['100% 50%', '0% 50%', '100% 50%'],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      >
+      Solutions
+      </motion.span>
     </motion.div>
   );
 };

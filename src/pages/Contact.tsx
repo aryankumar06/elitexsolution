@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
@@ -30,20 +30,7 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [coupon, setCoupon] = useState('');
-  const [couponApplied, setCouponApplied] = useState(false);
-  const [couponError, setCouponError] = useState('');
   const [submitError , setSubmitError] = useState<string>('');
-
-  // Auto-apply discount from URL param
-  useEffect(() => {
-    const discount = (searchParams.get('discount') || '').toUpperCase();
-    if (discount === 'DIWALI40') {
-      setCoupon('DIWALI40');
-      setCouponApplied(true);
-      setCouponError('');
-    }
-  }, [searchParams]);
 
   const services = [
     'Web Development',
@@ -93,26 +80,11 @@ const Contact: React.FC = () => {
     }
   }
 
-  const handleApplyCoupon = () => {
-    const code = coupon.trim().toUpperCase();
-    if (code === 'DIWALI40') {
-      setCouponApplied(true);
-      setCouponError('');
-    } else {
-      setCouponApplied(false);
-      setCouponError('Invalid code. Use DIWALI40 for 40% off your Diwali order.');
-    }
-  };
+
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-black text-red flex items-center justify-center relative overflow-hidden">
-        {/* Diwali Decorative Elements */}
-        <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30" style={{animationDelay: '0s'}}>🪔</div>
-        <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30" style={{animationDelay: '0.3s'}}>✨</div>
-        <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30" style={{animationDelay: '0.5s'}}>🎆</div>
-        <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30" style={{animationDelay: '0.7s'}}>🪔</div>
-        
+      <div className="min-h-screen bg-black text-white flex items-center justify-center relative overflow-hidden">
         <ParticleBackground />
         <Navigation />
         
@@ -122,16 +94,15 @@ const Contact: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-orange-500/50">
+          <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/50">
             <Check className="h-10 w-10 text-white" />
           </div>
-          <div className="text-4xl mb-4">🎉</div>
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-300 via-yellow-200 to-orange-300 bg-clip-text text-transparent">
-            Thank You! 🪔
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-300 via-emerald-200 to-green-300 bg-clip-text text-transparent">
+            Thank You!
           </h1>
           <p className="text-xl text-gray-400 mb-8">
-            ✨ We've received your message and will get back to you within 24 hours. 
-            Our team is excited to work with you on your project! ✨
+            We've received your message and will get back to you within 24 hours. 
+            Our team is excited to work with you on your project!
           </p>
           <button
             onClick={() => setIsSubmitted(false)}
@@ -146,14 +117,6 @@ const Contact: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Diwali Decorative Elements */}
-      <div className="fixed top-10 left-10 text-4xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0s'}}>🪔</div>
-      <div className="fixed top-20 right-20 text-3xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.3s'}}>✨</div>
-      <div className="fixed bottom-20 left-20 text-3xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.5s'}}>🎆</div>
-      <div className="fixed bottom-10 right-10 text-4xl animate-pulse opacity-30 z-0 pointer-events-none" style={{animationDelay: '0.7s'}}>🪔</div>
-      <div className="fixed top-1/2 left-5 text-2xl animate-pulse opacity-20 z-0 pointer-events-none" style={{animationDelay: '0.2s'}}>🎉</div>
-      <div className="fixed top-1/3 right-10 text-2xl animate-pulse opacity-20 z-0 pointer-events-none" style={{animationDelay: '0.4s'}}>🎊</div>
-      
       <ParticleBackground />
       <Navigation />
       
@@ -167,18 +130,14 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <LiquidGlow color="#22c55e" size={200} />
-            <div className="inline-block mb-2">
-              <span className="text-3xl md:text-4xl">🪔</span>
-            </div>
-            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-orange-300 via-yellow-200 to-orange-300 bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-green-300 via-emerald-200 to-green-300 bg-clip-text text-transparent">
               Get In{' '}
-              <span className="bg-gradient-to-r from-orange-400 via-yellow-500 to-red-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
                 Touch
               </span>
-              {' '}🎉
             </h1>
             <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
-              ✨ Ready to transform your ideas into reality? Let's discuss your project and create something amazing together! ✨
+              Ready to transform your ideas into reality? Let's discuss your project and create something amazing together!
             </p>
           </motion.div>
 
@@ -254,37 +213,11 @@ const Contact: React.FC = () => {
               >
                 <GlassCard>
                   <div className="p-6 md:p-8">
-                    <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-orange-300 via-yellow-200 to-orange-300 bg-clip-text text-transparent mb-4 md:mb-6">
-                      🎊 Start Your Project 🎊
+                    <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-green-300 via-emerald-200 to-green-300 bg-clip-text text-transparent mb-4 md:mb-6">
+                      Start Your Project
                     </h2>
                     
                     <form onSubmit={handleSubmit} className="space-y-6">
-                      {/* Diwali Special Coupon */}
-                      <div className="rounded-xl border-2 border-orange-500/40 bg-gradient-to-r from-orange-500/20 via-yellow-500/20 to-red-500/20 p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 shadow-lg shadow-orange-500/20">
-                        <div className="text-orange-300 text-sm md:text-base">
-                          <span className="text-2xl">🪔</span> <span className="font-bold text-yellow-300">Diwali Special: 40% OFF</span> on your first order with code <span className="font-mono text-yellow-300 font-bold">DIWALI40</span>! ✨
-                          {couponApplied && <span className="ml-2 text-green-400 font-semibold">✔ Applied!</span>}
-                        </div>
-                        <div className="flex items-stretch gap-2">
-                          <input
-                            type="text"
-                            value={coupon}
-                            onChange={(e) => setCoupon(e.target.value)}
-                            placeholder="Enter DIWALI40"
-                            className="px-3 py-2 rounded-lg bg-white/5 border border-orange-400/30 text-white text-sm focus:outline-none focus:border-orange-400"
-                          />
-                          <button
-                            type="button"
-                            onClick={handleApplyCoupon}
-                            className="px-4 py-2 rounded-lg bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white text-sm font-semibold shadow-lg shadow-orange-500/30"
-                          >
-                            Apply
-                          </button>
-                        </div>
-                      </div>
-                      {couponError && (
-                        <div className="text-red-400 text-sm">{couponError}</div>
-                      )}
                       <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                         <div>
                           <label className="block text-sm font-medium text-gray-300 mb-2">
